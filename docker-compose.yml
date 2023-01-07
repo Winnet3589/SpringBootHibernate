@@ -1,0 +1,19 @@
+version: "3.5"
+
+services:
+  postgres:
+    restart: unless-stopped
+    image: postgres:12
+    environment:
+      - POSTGRES_USER=user
+      - POSTGRES_PASSWORD=password
+      - POSTGRES_DB=SpringBootHibernate
+    volumes:
+      - ./initdb.d:/docker-entrypoint-initdb.d
+    ports:
+      - "15435:5432"
+    networks:
+      - extbsdnet
+networks:
+  extbsdnet:
+    driver: bridge
