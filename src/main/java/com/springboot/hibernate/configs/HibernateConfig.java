@@ -40,10 +40,11 @@ public class HibernateConfig {
 //		properties.put("hibernate.physical_naming_strategy", env.getProperty("spring.jpa.hibernate.naming.physical-strategy"));
 //		properties.put("hibernate.implicit_naming_strategy", env.getProperty("spring.jpa.hibernate.naming.implicit-strategy"));
 		properties.put("hibernate.globally_quoted_identifiers", env.getProperty("spring.jpa.properties.hibernate.globally_quoted_identifiers"));
+		properties.put("hibernate.enable_lazy_load_no_trans", env.getProperty("spring.jpa.properties.hibernate.enable_lazy_load_no_trans"));
 
 		LocalSessionFactoryBean factoryBean = new LocalSessionFactoryBean();
 		// Package contain entity classes
-		factoryBean.setPackagesToScan("stackjava.com.springboothibernate.entities");
+		factoryBean.setPackagesToScan("com.springboot.hibernate.entities");
 		factoryBean.setDataSource(dataSource);
 		factoryBean.setHibernateProperties(properties);
 		factoryBean.afterPropertiesSet();

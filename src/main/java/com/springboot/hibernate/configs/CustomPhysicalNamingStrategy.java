@@ -5,7 +5,7 @@ import org.hibernate.boot.model.naming.PhysicalNamingStrategy;
 import org.hibernate.engine.jdbc.env.spi.JdbcEnvironment;
 import org.springframework.context.annotation.Configuration;
 
-@Configuration
+//@Configuration
 public class CustomPhysicalNamingStrategy implements PhysicalNamingStrategy {
   @Override
   public Identifier toPhysicalCatalogName(final Identifier identifier, final JdbcEnvironment jdbcEnv) {

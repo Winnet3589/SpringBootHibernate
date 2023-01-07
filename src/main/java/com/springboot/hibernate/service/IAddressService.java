@@ -1,8 +1,7 @@
 package com.springboot.hibernate.service;
 
 import com.springboot.hibernate.entities.Address;
-import java.util.List;
+import com.springboot.hibernate.service.base.IBaseService;
 
-public interface IAddressService {
-  List<Address> findAll();
+public interface IAddressService extends IBaseService<Address> {
 }

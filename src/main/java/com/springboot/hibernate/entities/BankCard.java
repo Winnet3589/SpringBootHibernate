@@ -1,8 +1,11 @@
 package com.springboot.hibernate.entities;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import com.springboot.hibernate.entities.base.BaseEntity;
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
@@ -11,7 +14,6 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 import lombok.experimental.SuperBuilder;
-import com.springboot.hibernate.entities.base.BaseEntity;
 
 @NoArgsConstructor
 @AllArgsConstructor
@@ -31,8 +33,8 @@ public class BankCard extends BaseEntity<Long> {
   @Column(name = "BANK_CARD_NAME")
   private String bankCardName;
 
-  @ManyToOne
-  @JoinColumn(name = "EMPLOYEE_ID", nullable = false, referencedColumnName ="ID")
+  @ManyToOne(cascade = CascadeType.ALL,fetch= FetchType.LAZY)
+  @JoinColumn(name = "EMPLOYEE_ID", referencedColumnName ="ID")
   @JsonIgnoreProperties("bankCards")
   private Employee employee;
 }
