@@ -1,8 +1,8 @@
-package com.springboot.hibernate.service.impl;
+package com.springboot.hibernate.services.impl;
 
 import com.springboot.hibernate.entities.Job;
 import com.springboot.hibernate.repositories.impl.JobRepositoryImpl;
-import com.springboot.hibernate.service.IJobService;
+import com.springboot.hibernate.services.IJobService;
 import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;

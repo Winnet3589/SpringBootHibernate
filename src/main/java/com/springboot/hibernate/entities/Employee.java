@@ -40,7 +40,7 @@ public class Employee extends BaseEntity<Long> {
   @JsonIgnoreProperties("employee")
   private Address address;
 
-  @ManyToMany(cascade = CascadeType.ALL,fetch= FetchType.EAGER)
+  @ManyToMany(cascade = CascadeType.ALL,fetch= FetchType.LAZY)
   @JoinTable(
       name = "EMPLOYEE_JOB",
       joinColumns = { @JoinColumn(name = "EMPLOYEE_ID", referencedColumnName = "ID") },

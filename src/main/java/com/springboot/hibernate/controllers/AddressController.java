@@ -1,7 +1,7 @@
 package com.springboot.hibernate.controllers;
 
 import com.springboot.hibernate.entities.Address;
-import com.springboot.hibernate.service.impl.AddressServiceImpl;
+import com.springboot.hibernate.services.impl.AddressServiceImpl;
 import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;

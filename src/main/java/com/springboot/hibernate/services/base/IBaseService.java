@@ -1,4 +1,4 @@
-package com.springboot.hibernate.service.base;
+package com.springboot.hibernate.services.base;
 
 import java.util.List;
 

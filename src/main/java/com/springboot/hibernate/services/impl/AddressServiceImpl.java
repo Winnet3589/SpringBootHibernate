@@ -1,8 +1,8 @@
-package com.springboot.hibernate.service.impl;
+package com.springboot.hibernate.services.impl;
 
 import com.springboot.hibernate.entities.Address;
 import com.springboot.hibernate.repositories.impl.AddressRepositoryImpl;
-import com.springboot.hibernate.service.IAddressService;
+import com.springboot.hibernate.services.IAddressService;
 import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
