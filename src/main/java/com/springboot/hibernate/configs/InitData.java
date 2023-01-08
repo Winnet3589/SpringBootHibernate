@@ -32,14 +32,12 @@ public class InitData {
 
     // Address
     Address address = Address.builder()
-        .addressLine("NewYork-addressLine")
         .city("NewYork")
         .pinCode(1)
         .country("America")
         .state("A5AB5B")
         .build();
     Address address2 = Address.builder()
-        .addressLine("NewYork-addressLine2")
         .city("NewYork2")
         .pinCode(2)
         .country("America2")

@@ -23,9 +23,6 @@ import lombok.experimental.SuperBuilder;
 @Table(name = "ADDRESS")
 public class Address extends BaseEntity<Long> {
 
-  @Column(name = "ADDRESS_LINE")
-  private String addressLine;
-
   @Column(name = "CITY")
   private String city;
 
@@ -36,7 +33,7 @@ public class Address extends BaseEntity<Long> {
   private String country;
 
   @Column(name = "PIN_CODE")
-  private int pinCode;
+  private Integer pinCode;
 
   @OneToOne(cascade = CascadeType.ALL,fetch= FetchType.LAZY,mappedBy = "address")
   @JsonIgnoreProperties("address")
