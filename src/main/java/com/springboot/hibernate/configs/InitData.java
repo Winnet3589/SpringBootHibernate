@@ -4,7 +4,6 @@ import com.springboot.hibernate.entities.Address;
 import com.springboot.hibernate.entities.BankCard;
 import com.springboot.hibernate.entities.Employee;
 import com.springboot.hibernate.entities.Job;
-import com.springboot.hibernate.repositories.impl.AddressRepositoryImpl;
 import com.springboot.hibernate.service.impl.AddressServiceImpl;
 import com.springboot.hibernate.service.impl.BankCardServiceImpl;
 import com.springboot.hibernate.service.impl.EmployeeServiceImpl;
@@ -53,13 +52,13 @@ public class InitData {
     Employee employee = Employee
         .builder()
         .fullName("David")
-        .email("email@gmail.com")
+        .email("david@gmail.com")
         .address(address)
         .build();
     Employee employee2 = Employee
         .builder()
         .fullName("David2")
-        .email("email2@gmail.com")
+        .email("david2@gmail.com")
         .address(address2)
         .build();
     employeeService.save(employee);
@@ -67,21 +66,21 @@ public class InitData {
 
     // Bank Card
     BankCard bankCard= BankCard.builder()
-        .bankCardNo("BCNO")
-        .bankCardName("BCNAME")
-        .bankCardSerial("BCS")
+        .bankCardNo("1111-2222")
+        .bankCardName("TPBank")
+        .bankCardSerial("1111-2222")
         .employee(employee)
         .build();
     BankCard bankCard2= BankCard.builder()
-        .bankCardNo("BCNO2")
-        .bankCardName("BCNAME2")
-        .bankCardSerial("BCS2")
+        .bankCardNo("1111-3333")
+        .bankCardName("Vietcombank")
+        .bankCardSerial("1111-3333")
         .employee(employee)
         .build();
     BankCard bankCard3= BankCard.builder()
-        .bankCardNo("BCNO3")
-        .bankCardName("BCNAME3")
-        .bankCardSerial("BCS3")
+        .bankCardNo("1111-4444")
+        .bankCardName("Sacombank")
+        .bankCardSerial("1111-4444")
         .employee(employee2)
         .build();
     bankCardService.save(bankCard);
@@ -91,12 +90,12 @@ public class InitData {
     //Job
     Job job = Job.builder()
         .jobName("Developer")
-        .jobDescription("Test & Code")
+        .jobDescription("Code")
         .employees(List.of(employee, employee2))
         .build();
     Job job2 = Job.builder()
-        .jobName("Developer 2")
-        .jobDescription("Test & Code 2")
+        .jobName("Tester")
+        .jobDescription("Test")
         .employees(List.of(employee))
         .build();
     jobService.save(job);
