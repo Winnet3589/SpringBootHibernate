@@ -47,7 +47,7 @@ public class Employee extends BaseEntity<Long> {
       inverseJoinColumns = { @JoinColumn(name = "JOB_ID", referencedColumnName = "ID") }
   )
   @JsonIgnoreProperties("employees")
-  private List<Job> jobs = new ArrayList<>();
+  private List<Job> jobs;
 
   @OneToMany(cascade = CascadeType.ALL,fetch= FetchType.LAZY, mappedBy = "employee")
   @JsonIgnoreProperties("employee")

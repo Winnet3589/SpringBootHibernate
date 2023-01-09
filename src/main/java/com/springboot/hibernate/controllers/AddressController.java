@@ -1,6 +1,7 @@
 package com.springboot.hibernate.controllers;
 
-import com.springboot.hibernate.entities.Address;
+import com.springboot.hibernate.dtos.AddressDto;
+import com.springboot.hibernate.mappers.MapStructMapper;
 import com.springboot.hibernate.services.impl.AddressServiceImpl;
 import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -14,8 +15,8 @@ public class AddressController {
 	private AddressServiceImpl addressService;
 
 	@GetMapping(value= "/address-list")
-	public List<Address> listCustomer() {
-		List<Address> list =  addressService.findAll();
+	public List<AddressDto> listAddress() {
+		List<AddressDto> list =  MapStructMapper.INSTANCE.mapAddressFromEntityToDtoList(addressService.findAll());
 		return list;
 	}
 
