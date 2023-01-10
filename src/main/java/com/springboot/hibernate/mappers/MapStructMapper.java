@@ -1,6 +1,7 @@
 package com.springboot.hibernate.mappers;
 
 
+import com.springboot.hibernate.dtos.BankCardDto.EmployeeInBankCardDto;
 import com.springboot.hibernate.dtos.CitizenIDCardDto;
 import com.springboot.hibernate.dtos.CitizenIDCardDto.EmployeeInCitizenIDCardDto;
 import com.springboot.hibernate.dtos.BankCardDto;
@@ -36,18 +37,19 @@ public interface MapStructMapper {
   CitizenIDCardInEmployeeDto mapCitizenIDCardFromEntityToDto_InEmployee(CitizenIDCard citizenIDCard);
   JobInEmployeeDto mapJobFromEntityToDto_InEmployee(Job job);
   List<JobInEmployeeDto> mapJobFromEntityToDto_InEmployee(List<Job> job);
-  BankCardInEmployeeDto mapBankCardDtoFromEntityToDto_InEmployee(BankCard bankCard);
-  List<BankCardInEmployeeDto> mapBankCardDtoFromEntityToDto_InEmployee(List<BankCard> bankCard);
+  BankCardInEmployeeDto mapBankCardDtoFromEntityToDtoList_InEmployee(BankCard bankCard);
+  List<BankCardInEmployeeDto> mapBankCardDtoFromEntityToDtoList_InEmployee(List<BankCard> bankCard);
 
   // 3.Job
   JobDto mapJobFromEntityToDto(Job job);
-  EmployeeInJobDto mapJobFromEntityToDto_InJob(Job job);
-  List<EmployeeInJobDto> mapJobFromEntityToDto_InJob(List<Job> job);
+  EmployeeInJobDto mapJobFromEntityToDtoList_InJob(Job job);
+  List<EmployeeInJobDto> mapJobFromEntityToDtoList_InJob(List<Job> job);
   List<JobDto> mapJobFromEntityToDtoList(List<Job> job);
 
   //4.Bank card
   BankCardDto mapBankCardFromEntityToDto(BankCard bankCard);
   List<BankCardDto> mapBankCardFromEntityToDtoList(List<BankCard> bankCard);
+  EmployeeInBankCardDto mapEmployeeFromEntityToDto_InBankCard(Job job);
 
   // II.Dto -> entity
 

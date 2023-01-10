@@ -16,5 +16,15 @@ public class BankCardDto extends BaseDto<Long> {
   private String bankCardNo;
   private String bankCardSerial;
   private String bankCardName;
-  private EmployeeDto employee;
+  private EmployeeInBankCardDto employee;
+
+  @NoArgsConstructor
+  @AllArgsConstructor
+  @Getter
+  @Setter
+  @SuperBuilder
+  public static class EmployeeInBankCardDto extends BaseDto<Long> {
+    private String fullName;
+    private String email;
+  }
 }

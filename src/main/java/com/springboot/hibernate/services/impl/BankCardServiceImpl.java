@@ -4,16 +4,16 @@ import com.springboot.hibernate.entities.BankCard;
 import com.springboot.hibernate.repositories.impl.BankCardRepositoryImpl;
 import com.springboot.hibernate.services.IBankCardService;
 import java.util.List;
-import org.springframework.beans.factory.annotation.Autowired;
+import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 @Service
 @Transactional
+@RequiredArgsConstructor
 public class BankCardServiceImpl implements IBankCardService {
 
-  @Autowired
-  private BankCardRepositoryImpl bankCardRepository;
+  private final BankCardRepositoryImpl bankCardRepository;
 
   @Override
   public List<BankCard> findAll() {

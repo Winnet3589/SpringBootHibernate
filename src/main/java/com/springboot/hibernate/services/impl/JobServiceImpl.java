@@ -4,16 +4,16 @@ import com.springboot.hibernate.entities.Job;
 import com.springboot.hibernate.repositories.impl.JobRepositoryImpl;
 import com.springboot.hibernate.services.IJobService;
 import java.util.List;
-import org.springframework.beans.factory.annotation.Autowired;
+import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 @Service
 @Transactional
+@RequiredArgsConstructor
 public class JobServiceImpl implements IJobService {
 
-  @Autowired
-  private JobRepositoryImpl jobRepository;
+  private final JobRepositoryImpl jobRepository;
 
   @Override
   public List<Job> findAll() {

@@ -1,33 +1,27 @@
 package com.springboot.hibernate.configs;
 
-import com.springboot.hibernate.entities.CitizenIDCard;
 import com.springboot.hibernate.entities.BankCard;
+import com.springboot.hibernate.entities.CitizenIDCard;
 import com.springboot.hibernate.entities.Employee;
 import com.springboot.hibernate.entities.Job;
-import com.springboot.hibernate.services.impl.CitizenIDCardDServiceImpl;
 import com.springboot.hibernate.services.impl.BankCardServiceImpl;
+import com.springboot.hibernate.services.impl.CitizenIDCardDServiceImpl;
 import com.springboot.hibernate.services.impl.EmployeeServiceImpl;
 import com.springboot.hibernate.services.impl.JobServiceImpl;
-import java.time.Instant;
-import java.util.Date;
+import java.sql.Timestamp;
 import java.util.List;
 import javax.annotation.PostConstruct;
 import lombok.RequiredArgsConstructor;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 @Component
 @RequiredArgsConstructor
 public class InitData {
 
-  @Autowired
-  private CitizenIDCardDServiceImpl addressService;
-  @Autowired
-  private EmployeeServiceImpl employeeService;
-  @Autowired
-  private BankCardServiceImpl bankCardService;
-  @Autowired
-  private JobServiceImpl jobService;
+  private final CitizenIDCardDServiceImpl citizenIDCardDService;
+  private final EmployeeServiceImpl employeeService;
+  private final BankCardServiceImpl bankCardService;
+  private final JobServiceImpl jobService;
 
   @PostConstruct
   void init() {
@@ -35,7 +29,7 @@ public class InitData {
     // CitizenIDCard
     CitizenIDCard citizenIDCard = CitizenIDCard.builder()
         .citizenIdNo("205467129")
-        .dayOfBirth(Date.from(Instant.parse("03-05-1989")))
+        .dayOfBirth(Timestamp.valueOf("2018-09-01 09:01:15"))
         .city("NewYork")
         .pinCode(1)
         .country("America")
@@ -43,14 +37,14 @@ public class InitData {
         .build();
     CitizenIDCard citizenIDCard2 = CitizenIDCard.builder()
         .citizenIdNo("305467129")
-        .dayOfBirth(Date.from(Instant.parse("04-05-1989")))
+        .dayOfBirth(Timestamp.valueOf("2019-09-01 09:01:15"))
         .city("Quang Nam")
         .pinCode(2)
         .country("Viet Nam")
         .state("CACD2D")
         .build();
-    addressService.save(citizenIDCard);
-    addressService.save(citizenIDCard2);
+    citizenIDCardDService.save(citizenIDCard);
+    citizenIDCardDService.save(citizenIDCard2);
 
     //Job
     Job job = Job.builder()

@@ -1,23 +1,28 @@
 package com.springboot.hibernate.controllers;
 
 import com.springboot.hibernate.dtos.JobDto;
+import com.springboot.hibernate.entities.Job;
 import com.springboot.hibernate.mappers.MapStructMapper;
 import com.springboot.hibernate.services.impl.JobServiceImpl;
 import java.util.List;
-import org.springframework.beans.factory.annotation.Autowired;
+import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
+@RequiredArgsConstructor
 public class JobController {
 
-	@Autowired
-	private JobServiceImpl jobService;
+	private final JobServiceImpl jobService;
+
+	@GetMapping(value= "/job-list-dto")
+	public List<JobDto> listJobDto() {
+		return MapStructMapper.INSTANCE.mapJobFromEntityToDtoList(jobService.findAll());
+	}
 
 	@GetMapping(value= "/job-list")
-	public List<JobDto> listJob() {
-		List<JobDto> list =  MapStructMapper.INSTANCE.mapJobFromEntityToDtoList(jobService.findAll());
-		return list;
+	public List<Job> listJob() {
+		return jobService.findAll();
 	}
 
 

@@ -1,6 +1,7 @@
 package com.springboot.hibernate.repositories.base;
 
 import java.util.List;
+import lombok.RequiredArgsConstructor;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.query.Query;

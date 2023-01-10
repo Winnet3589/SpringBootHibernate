@@ -1,23 +1,28 @@
 package com.springboot.hibernate.controllers;
 
 import com.springboot.hibernate.dtos.CitizenIDCardDto;
+import com.springboot.hibernate.entities.CitizenIDCard;
 import com.springboot.hibernate.mappers.MapStructMapper;
 import com.springboot.hibernate.services.impl.CitizenIDCardDServiceImpl;
 import java.util.List;
-import org.springframework.beans.factory.annotation.Autowired;
+import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
+@RequiredArgsConstructor
 public class CitizenIDCardDController {
 
-	@Autowired
-	private CitizenIDCardDServiceImpl addressService;
+	private final CitizenIDCardDServiceImpl citizenIDCardDService;
 
-	@GetMapping(value= "/address-list")
-	public List<CitizenIDCardDto> listAddress() {
-		List<CitizenIDCardDto> list =  MapStructMapper.INSTANCE.mapCitizenIDCardFromEntityToDtoList(addressService.findAll());
-		return list;
+	@GetMapping(value= "/citizenidcard-list-dto")
+	public List<CitizenIDCardDto> listAddressDto() {
+		return MapStructMapper.INSTANCE.mapCitizenIDCardFromEntityToDtoList(citizenIDCardDService.findAll());
+	}
+
+	@GetMapping(value= "/citizenidcard-list")
+	public List<CitizenIDCard> listAddress() {
+		return citizenIDCardDService.findAll();
 	}
 
 

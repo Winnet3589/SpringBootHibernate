@@ -2,6 +2,7 @@ package com.springboot.hibernate.entities;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.springboot.hibernate.entities.base.BaseEntity;
+import java.sql.Timestamp;
 import java.util.Date;
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
@@ -31,7 +32,7 @@ public class CitizenIDCard extends BaseEntity<Long> {
   private String citizenIdNo;
 
   @Column(name = "DAY_OF_BIRTH")
-  private Date dayOfBirth;
+  private Timestamp dayOfBirth;
 
   @Column(name = "CITY")
   private String city;
