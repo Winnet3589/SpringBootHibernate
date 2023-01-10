@@ -10,5 +10,4 @@ import org.springframework.stereotype.Repository;
 @RequiredArgsConstructor
 public class EmployeeRepositoryImpl extends BaseRepositoryImpl<Employee> implements
     IEmployeeRepository {
-
 }

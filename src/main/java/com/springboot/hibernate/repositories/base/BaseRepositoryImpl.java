@@ -1,7 +1,6 @@
 package com.springboot.hibernate.repositories.base;
 
 import java.util.List;
-import lombok.RequiredArgsConstructor;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.query.Query;
@@ -11,6 +10,7 @@ public class BaseRepositoryImpl<T> implements IBaseRepository<T> {
 
   @Autowired
   private SessionFactory sessionFactory;
+
 
   public List<T> findAll(Class<T> type) {
     Session session = this.sessionFactory.getCurrentSession();
