@@ -16,7 +16,7 @@ import lombok.experimental.SuperBuilder;
 public class EmployeeDto extends BaseDto<Long> {
   private String fullName;
   private String email;
-  private AddressInEmployeeDto address;
+  private CitizenIDCardInEmployeeDto address;
   private List<JobInEmployeeDto> jobs;
   private List<BankCardInEmployeeDto> bankCards;
 
@@ -25,7 +25,7 @@ public class EmployeeDto extends BaseDto<Long> {
   @Getter
   @Setter
   @SuperBuilder
-  public static class AddressInEmployeeDto extends BaseDto<Long> {
+  public static class CitizenIDCardInEmployeeDto extends BaseDto<Long> {
 
     private String city;
     private String state;

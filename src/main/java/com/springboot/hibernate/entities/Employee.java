@@ -2,7 +2,6 @@ package com.springboot.hibernate.entities;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.springboot.hibernate.entities.base.BaseEntity;
-import java.util.ArrayList;
 import java.util.List;
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
@@ -38,7 +37,7 @@ public class Employee extends BaseEntity<Long> {
   @OneToOne(cascade = CascadeType.ALL,fetch= FetchType.LAZY)
   @JoinColumn(name = "ADDRESS_ID", referencedColumnName ="ID")
   @JsonIgnoreProperties("employee")
-  private Address address;
+  private CitizenIDCard citizenIDCard;
 
   @ManyToMany(cascade = CascadeType.ALL,fetch= FetchType.LAZY)
   @JoinTable(

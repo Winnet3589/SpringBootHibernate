@@ -3,8 +3,11 @@ package com.springboot.hibernate.entities;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.springboot.hibernate.entities.base.BaseEntity;
 import java.util.Date;
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
+import javax.persistence.OneToOne;
 import javax.persistence.Table;
 import javax.persistence.Version;
 import lombok.AllArgsConstructor;
@@ -21,8 +24,14 @@ import org.hibernate.annotations.SourceType;
 @Setter
 @SuperBuilder
 @Entity
-@Table(name = "ADDRESS")
-public class Address extends BaseEntity<Long> {
+@Table(name = "CITIZEN_ID_CARD")
+public class CitizenIDCard extends BaseEntity<Long> {
+
+  @Column(name = "CITIZEN_ID_NO")
+  private String citizenIdNo;
+
+  @Column(name = "DAY_OF_BIRTH")
+  private Date dayOfBirth;
 
   @Column(name = "CITY")
   private String city;
@@ -36,9 +45,9 @@ public class Address extends BaseEntity<Long> {
   @Column(name = "PIN_CODE")
   private Integer pinCode;
 
-//  @OneToOne(cascade = CascadeType.ALL,fetch= FetchType.LAZY,mappedBy = "address")
+  @OneToOne(cascade = CascadeType.ALL,fetch= FetchType.LAZY,mappedBy = "citizenIDCard")
   @JsonIgnoreProperties("citizenIDCard")
-//  private Employee employee;
+  private Employee employee;
 
   @Version
   @Source(value = SourceType.DB)

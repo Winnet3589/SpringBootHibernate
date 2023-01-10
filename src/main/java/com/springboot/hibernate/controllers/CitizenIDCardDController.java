@@ -1,22 +1,22 @@
 package com.springboot.hibernate.controllers;
 
-import com.springboot.hibernate.dtos.AddressDto;
+import com.springboot.hibernate.dtos.CitizenIDCardDto;
 import com.springboot.hibernate.mappers.MapStructMapper;
-import com.springboot.hibernate.services.impl.AddressServiceImpl;
+import com.springboot.hibernate.services.impl.CitizenIDCardDServiceImpl;
 import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
-public class AddressController {
+public class CitizenIDCardDController {
 
 	@Autowired
-	private AddressServiceImpl addressService;
+	private CitizenIDCardDServiceImpl addressService;
 
 	@GetMapping(value= "/address-list")
-	public List<AddressDto> listAddress() {
-		List<AddressDto> list =  MapStructMapper.INSTANCE.mapAddressFromEntityToDtoList(addressService.findAll());
+	public List<CitizenIDCardDto> listAddress() {
+		List<CitizenIDCardDto> list =  MapStructMapper.INSTANCE.mapCitizenIDCardFromEntityToDtoList(addressService.findAll());
 		return list;
 	}
 

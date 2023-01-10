@@ -1,13 +1,15 @@
 package com.springboot.hibernate.configs;
 
-import com.springboot.hibernate.entities.Address;
+import com.springboot.hibernate.entities.CitizenIDCard;
 import com.springboot.hibernate.entities.BankCard;
 import com.springboot.hibernate.entities.Employee;
 import com.springboot.hibernate.entities.Job;
-import com.springboot.hibernate.services.impl.AddressServiceImpl;
+import com.springboot.hibernate.services.impl.CitizenIDCardDServiceImpl;
 import com.springboot.hibernate.services.impl.BankCardServiceImpl;
 import com.springboot.hibernate.services.impl.EmployeeServiceImpl;
 import com.springboot.hibernate.services.impl.JobServiceImpl;
+import java.time.Instant;
+import java.util.Date;
 import java.util.List;
 import javax.annotation.PostConstruct;
 import lombok.RequiredArgsConstructor;
@@ -19,7 +21,7 @@ import org.springframework.stereotype.Component;
 public class InitData {
 
   @Autowired
-  private AddressServiceImpl addressService;
+  private CitizenIDCardDServiceImpl addressService;
   @Autowired
   private EmployeeServiceImpl employeeService;
   @Autowired
@@ -30,21 +32,25 @@ public class InitData {
   @PostConstruct
   void init() {
 
-    // Address
-    Address address = Address.builder()
+    // CitizenIDCard
+    CitizenIDCard citizenIDCard = CitizenIDCard.builder()
+        .citizenIdNo("205467129")
+        .dayOfBirth(Date.from(Instant.parse("03-05-1989")))
         .city("NewYork")
         .pinCode(1)
         .country("America")
         .state("A5AB5B")
         .build();
-    Address address2 = Address.builder()
+    CitizenIDCard citizenIDCard2 = CitizenIDCard.builder()
+        .citizenIdNo("305467129")
+        .dayOfBirth(Date.from(Instant.parse("04-05-1989")))
         .city("Quang Nam")
         .pinCode(2)
         .country("Viet Nam")
         .state("CACD2D")
         .build();
-    addressService.save(address);
-    addressService.save(address2);
+    addressService.save(citizenIDCard);
+    addressService.save(citizenIDCard2);
 
     //Job
     Job job = Job.builder()
@@ -65,14 +71,14 @@ public class InitData {
         .builder()
         .fullName("David")
         .email("david@gmail.com")
-        .address(address)
+        .citizenIDCard(citizenIDCard)
         .jobs(List.of(job))
         .build();
     Employee employee2 = Employee
         .builder()
         .fullName("David2")
         .email("david2@gmail.com")
-        .address(address2)
+        .citizenIDCard(citizenIDCard2)
         .jobs(List.of(job, job2))
         .build();
     employeeService.save(employee);

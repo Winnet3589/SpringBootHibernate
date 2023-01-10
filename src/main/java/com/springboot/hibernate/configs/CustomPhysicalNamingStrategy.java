@@ -3,7 +3,6 @@ package com.springboot.hibernate.configs;
 import org.hibernate.boot.model.naming.Identifier;
 import org.hibernate.boot.model.naming.PhysicalNamingStrategy;
 import org.hibernate.engine.jdbc.env.spi.JdbcEnvironment;
-import org.springframework.context.annotation.Configuration;
 
 //@Configuration
 public class CustomPhysicalNamingStrategy implements PhysicalNamingStrategy {
