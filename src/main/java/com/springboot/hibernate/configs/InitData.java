@@ -1,16 +1,19 @@
 package com.springboot.hibernate.configs;
 
+import com.springboot.hibernate.JobType;
 import com.springboot.hibernate.entities.BankCard;
 import com.springboot.hibernate.entities.CitizenIDCard;
 import com.springboot.hibernate.entities.Employee;
 import com.springboot.hibernate.entities.Job;
+import com.springboot.hibernate.enums.Gender;
 import com.springboot.hibernate.services.impl.BankCardServiceImpl;
 import com.springboot.hibernate.services.impl.CitizenIDCardDServiceImpl;
 import com.springboot.hibernate.services.impl.EmployeeServiceImpl;
 import com.springboot.hibernate.services.impl.JobServiceImpl;
+import java.util.Date;
+import javax.annotation.PostConstruct;
 import java.sql.Timestamp;
 import java.util.List;
-import javax.annotation.PostConstruct;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Component;
 
@@ -29,9 +32,8 @@ public class InitData {
     // CitizenIDCard
     CitizenIDCard citizenIDCard = CitizenIDCard.builder()
         .citizenIdNo("205467129")
-        .dayOfBirth(Timestamp.valueOf("2018-09-01 09:01:15"))
+        .dayOfBirth(new Date())
         .city("NewYork")
-        .pinCode(1)
         .country("America")
         .state("A5AB5B")
         .build();
@@ -39,7 +41,6 @@ public class InitData {
         .citizenIdNo("305467129")
         .dayOfBirth(Timestamp.valueOf("2019-09-01 09:01:15"))
         .city("Quang Nam")
-        .pinCode(2)
         .country("Viet Nam")
         .state("CACD2D")
         .build();
@@ -50,11 +51,13 @@ public class InitData {
     Job job = Job.builder()
         .jobName("Developer")
         .jobDescription("Code")
+        .jobType(JobType.FULL_TIME)
 //        .employees(List.of(employee, employee2))
         .build();
     Job job2 = Job.builder()
         .jobName("Tester")
         .jobDescription("Test")
+        .jobType(JobType.PART_TIME)
 //        .employees(List.of(employee))
         .build();
 //    jobService.save(job);
@@ -63,15 +66,17 @@ public class InitData {
     // Employee
     Employee employee = Employee
         .builder()
-        .fullName("David")
-        .email("david@gmail.com")
+        .fullName("Nguyen Thi A")
+        .email("a@gmail.com")
+        .gender(Gender.FEMALE)
         .citizenIDCard(citizenIDCard)
         .jobs(List.of(job))
         .build();
     Employee employee2 = Employee
         .builder()
-        .fullName("David2")
-        .email("david2@gmail.com")
+        .fullName("Nguyen Van B")
+        .gender(Gender.MALE)
+        .email("b@gmail.com")
         .citizenIDCard(citizenIDCard2)
         .jobs(List.of(job, job2))
         .build();

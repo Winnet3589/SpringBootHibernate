@@ -6,6 +6,7 @@ import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
+import javax.persistence.ForeignKey;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
@@ -33,8 +34,9 @@ public class BankCard extends BaseEntity<Long> {
   @Column(name = "BANK_CARD_NAME")
   private String bankCardName;
 
-  @ManyToOne(cascade = CascadeType.ALL,fetch= FetchType.LAZY)
-  @JoinColumn(name = "EMPLOYEE_ID", referencedColumnName ="ID")
+  @ManyToOne(cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+  @JoinColumn(name = "EMPLOYEE_ID", referencedColumnName = "ID",
+      foreignKey = @ForeignKey(name = "EMPLOYEE_ID_FK"))
   @JsonIgnoreProperties("bankCards")
   private Employee employee;
 }

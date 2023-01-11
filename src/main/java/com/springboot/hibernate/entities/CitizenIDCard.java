@@ -2,7 +2,6 @@ package com.springboot.hibernate.entities;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.springboot.hibernate.entities.base.BaseEntity;
-import java.sql.Timestamp;
 import java.util.Date;
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
@@ -10,6 +9,9 @@ import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
+import javax.persistence.Temporal;
+import javax.persistence.TemporalType;
+import javax.persistence.UniqueConstraint;
 import javax.persistence.Version;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -25,14 +27,21 @@ import org.hibernate.annotations.SourceType;
 @Setter
 @SuperBuilder
 @Entity
-@Table(name = "CITIZEN_ID_CARD")
+@Table(name = "CITIZEN_ID_CARD",
+    uniqueConstraints =  @UniqueConstraint(
+        name = "CITIZEN_ID_NO",
+        columnNames = {
+            "CITIZEN_ID_NO"
+        }
+    ))
 public class CitizenIDCard extends BaseEntity<Long> {
 
   @Column(name = "CITIZEN_ID_NO")
   private String citizenIdNo;
 
   @Column(name = "DAY_OF_BIRTH")
-  private Timestamp dayOfBirth;
+  @Temporal(TemporalType.DATE)
+  private Date dayOfBirth;
 
   @Column(name = "CITY")
   private String city;
@@ -41,12 +50,21 @@ public class CitizenIDCard extends BaseEntity<Long> {
   private String state;
 
   @Column(name = "COUNTRY")
+//  @ColumnDefault( value = "VIET NAM" )
   private String country;
 
-  @Column(name = "PIN_CODE")
-  private Integer pinCode;
+//  @Generated( value = GenerationTime.ALWAYS)
+//  @Column(columnDefinition =
+//      "AS CONCAT(" +
+//          "	COALESCE(COUNTRY, ''), " +
+//          "	COALESCE(' ' + state, ''), " +
+//          "	COALESCE(' ' + CITY, '') " +
+//          ")")
+//  @Column(name = "FULL_ADDRESS")
+//  @Formula("concat(COUNTRY,' ',STATE,' ',CITY)")
+//  private String fullAddress;
 
-  @OneToOne(cascade = CascadeType.ALL,fetch= FetchType.LAZY,mappedBy = "citizenIDCard")
+  @OneToOne(cascade = CascadeType.ALL, fetch = FetchType.LAZY, mappedBy = "citizenIDCard")
   @JsonIgnoreProperties("citizenIDCard")
   private Employee employee;
 

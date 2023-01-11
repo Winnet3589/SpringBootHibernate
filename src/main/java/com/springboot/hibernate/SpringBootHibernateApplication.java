@@ -16,10 +16,6 @@ import org.springframework.context.annotation.Bean;
 @SpringBootApplication(exclude = {DataSourceAutoConfiguration.class,
     DataSourceTransactionManagerAutoConfiguration.class, HibernateJpaAutoConfiguration.class})
 @EntityScan({"com.springboot.hibernate"})
-//@EnableAutoConfiguration(exclude = { DataSourceAutoConfiguration.class,
-//		DataSourceTransactionManagerAutoConfiguration.class, HibernateJpaAutoConfiguration.class })
-
-//@SpringBootApplication
 public class SpringBootHibernateApplication {
 
   public static void main(String[] args) {
