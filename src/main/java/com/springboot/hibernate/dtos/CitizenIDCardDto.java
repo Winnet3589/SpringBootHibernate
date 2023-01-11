@@ -20,7 +20,6 @@ public class CitizenIDCardDto extends BaseDto<Long> {
   private String city;
   private String state;
   private String country;
-  private Integer pinCode;
   private EmployeeInCitizenIDCardDto employee;
 
   @NoArgsConstructor
@@ -29,7 +28,8 @@ public class CitizenIDCardDto extends BaseDto<Long> {
   @Setter
   @SuperBuilder
   public static class EmployeeInCitizenIDCardDto extends BaseDto<Long> {
-
+    private String phoneNumber;
+    private String gender;
     private String fullName;
     private String email;
   }

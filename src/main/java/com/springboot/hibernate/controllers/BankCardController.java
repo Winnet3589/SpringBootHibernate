@@ -15,12 +15,12 @@ public class BankCardController {
 
 	private final BankCardServiceImpl bankCardService;
 
-	@GetMapping(value= "/bankcard-list-dto")
+	@GetMapping(value= "/bankcards/dto")
 	public List<BankCardDto> listBankCardDto() {
 		return MapStructMapper.INSTANCE.mapBankCardFromEntityToDtoList(bankCardService.findAll());
 	}
 
-	@GetMapping(value= "/bankcard-list")
+	@GetMapping(value= "/bankcards")
 	public List<BankCard> listBankCard() {
 		return bankCardService.findAll();
 	}

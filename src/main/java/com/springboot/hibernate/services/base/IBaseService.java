@@ -5,4 +5,5 @@ import java.util.List;
 public interface IBaseService<T> {
   List<T> findAll();
   void save(final T obj);
+  T findById(Long id);
 }

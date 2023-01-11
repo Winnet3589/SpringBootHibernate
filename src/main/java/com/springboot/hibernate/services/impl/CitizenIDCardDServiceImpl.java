@@ -24,4 +24,9 @@ public class CitizenIDCardDServiceImpl implements ICitizenIDCardDService {
   public void save(CitizenIDCard obj) {
     citizenIDCardDRepository.save(obj);
   }
+
+  @Override
+  public CitizenIDCard findById(Long id) {
+    return citizenIDCardDRepository.findById(id, CitizenIDCard.class);
+  }
 }

@@ -12,14 +12,11 @@ import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 import javax.persistence.UniqueConstraint;
-import javax.persistence.Version;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 import lombok.experimental.SuperBuilder;
-import org.hibernate.annotations.Source;
-import org.hibernate.annotations.SourceType;
 
 @NoArgsConstructor
 @AllArgsConstructor
@@ -29,7 +26,7 @@ import org.hibernate.annotations.SourceType;
 @Entity
 @Table(name = "CITIZEN_ID_CARD",
     uniqueConstraints =  @UniqueConstraint(
-        name = "CITIZEN_ID_NO",
+        name = "CITIZEN_ID_NO_UNIQUE",
         columnNames = {
             "CITIZEN_ID_NO"
         }
@@ -50,25 +47,9 @@ public class CitizenIDCard extends BaseEntity<Long> {
   private String state;
 
   @Column(name = "COUNTRY")
-//  @ColumnDefault( value = "VIET NAM" )
   private String country;
-
-//  @Generated( value = GenerationTime.ALWAYS)
-//  @Column(columnDefinition =
-//      "AS CONCAT(" +
-//          "	COALESCE(COUNTRY, ''), " +
-//          "	COALESCE(' ' + state, ''), " +
-//          "	COALESCE(' ' + CITY, '') " +
-//          ")")
-//  @Column(name = "FULL_ADDRESS")
-//  @Formula("concat(COUNTRY,' ',STATE,' ',CITY)")
-//  private String fullAddress;
 
   @OneToOne(cascade = CascadeType.ALL, fetch = FetchType.LAZY, mappedBy = "citizenIDCard")
   @JsonIgnoreProperties("citizenIDCard")
   private Employee employee;
-
-  @Version
-  @Source(value = SourceType.DB)
-  private Date version;
 }

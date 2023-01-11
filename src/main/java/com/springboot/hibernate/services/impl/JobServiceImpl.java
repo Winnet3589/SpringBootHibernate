@@ -1,5 +1,6 @@
 package com.springboot.hibernate.services.impl;
 
+import com.springboot.hibernate.entities.BankCard;
 import com.springboot.hibernate.entities.Job;
 import com.springboot.hibernate.repositories.impl.JobRepositoryImpl;
 import com.springboot.hibernate.services.IJobService;
@@ -23,5 +24,10 @@ public class JobServiceImpl implements IJobService {
   @Override
   public void save(Job job) {
     jobRepository.save(job);
+  }
+
+  @Override
+  public Job findById(Long id) {
+    return jobRepository.findById(id, Job.class);
   }
 }

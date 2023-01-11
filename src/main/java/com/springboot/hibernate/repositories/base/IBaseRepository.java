@@ -4,5 +4,6 @@ import java.util.List;
 
 public interface IBaseRepository<T> {
   List<T> findAll(Class<T> type);
+  <T> T findById(Long id, Class<T> type);
   void save(final T obj);
 }

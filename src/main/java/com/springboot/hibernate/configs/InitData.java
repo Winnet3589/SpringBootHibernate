@@ -70,6 +70,7 @@ public class InitData {
         .email("a@gmail.com")
         .gender(Gender.FEMALE)
         .citizenIDCard(citizenIDCard)
+        .phoneNumber("0905 030589")
         .jobs(List.of(job))
         .build();
     Employee employee2 = Employee
@@ -78,6 +79,7 @@ public class InitData {
         .gender(Gender.MALE)
         .email("b@gmail.com")
         .citizenIDCard(citizenIDCard2)
+        .phoneNumber("0906 030589")
         .jobs(List.of(job, job2))
         .build();
     employeeService.save(employee);

@@ -24,6 +24,8 @@ public class BankCardDto extends BaseDto<Long> {
   @Setter
   @SuperBuilder
   public static class EmployeeInBankCardDto extends BaseDto<Long> {
+    private String phoneNumber;
+    private String gender;
     private String fullName;
     private String email;
   }

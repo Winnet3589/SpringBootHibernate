@@ -17,6 +17,7 @@ import javax.persistence.ManyToMany;
 import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
+import javax.persistence.UniqueConstraint;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -29,7 +30,13 @@ import lombok.experimental.SuperBuilder;
 @Setter
 @SuperBuilder
 @Entity
-@Table(name = "EMPLOYEE")
+@Table(name = "EMPLOYEE",
+    uniqueConstraints =  @UniqueConstraint(
+        name = "CITIZEN_ID_CARD_ID_UNIQUE",
+        columnNames = {
+            "CITIZEN_ID_CARD_ID"
+        }
+    ))
 public class Employee extends BaseEntity<Long> {
 
   @Column(name = "FULL_NAME")
@@ -42,6 +49,7 @@ public class Employee extends BaseEntity<Long> {
   private String phoneNumber;
 
   @Convert( converter = GenderConverter.class )
+  @Column(name = "GENDER")
   public Gender gender;
 
   @OneToOne(cascade = CascadeType.ALL,fetch= FetchType.LAZY)

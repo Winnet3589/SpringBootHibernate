@@ -15,12 +15,12 @@ public class CitizenIDCardDController {
 
 	private final CitizenIDCardDServiceImpl citizenIDCardDService;
 
-	@GetMapping(value= "/citizenidcard-list-dto")
+	@GetMapping(value= "/citizenidcards/dto")
 	public List<CitizenIDCardDto> listAddressDto() {
 		return MapStructMapper.INSTANCE.mapCitizenIDCardFromEntityToDtoList(citizenIDCardDService.findAll());
 	}
 
-	@GetMapping(value= "/citizenidcard-list")
+	@GetMapping(value= "/citizenidcards")
 	public List<CitizenIDCard> listAddress() {
 		return citizenIDCardDService.findAll();
 	}

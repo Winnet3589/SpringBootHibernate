@@ -1,6 +1,7 @@
 package com.springboot.hibernate.services.impl;
 
 import com.springboot.hibernate.entities.BankCard;
+import com.springboot.hibernate.entities.CitizenIDCard;
 import com.springboot.hibernate.repositories.impl.BankCardRepositoryImpl;
 import com.springboot.hibernate.services.IBankCardService;
 import java.util.List;
@@ -23,5 +24,10 @@ public class BankCardServiceImpl implements IBankCardService {
   @Override
   public void save(BankCard bankCard) {
     bankCardRepository.save(bankCard);
+  }
+
+  @Override
+  public BankCard findById(Long id) {
+    return bankCardRepository.findById(id, BankCard.class);
   }
 }

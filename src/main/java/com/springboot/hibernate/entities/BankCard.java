@@ -10,6 +10,7 @@ import javax.persistence.ForeignKey;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
+import javax.persistence.UniqueConstraint;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -22,7 +23,13 @@ import lombok.experimental.SuperBuilder;
 @Setter
 @SuperBuilder
 @Entity
-@Table(name = "BANK_CARD")
+@Table(name = "BANK_CARD",
+    uniqueConstraints =  @UniqueConstraint(
+        name = "BANK_CARD_NO_UNIQUE",
+        columnNames = {
+            "BANK_CARD_NO"
+        }
+    ))
 public class BankCard extends BaseEntity<Long> {
 
   @Column(name = "BANK_CARD_NO")

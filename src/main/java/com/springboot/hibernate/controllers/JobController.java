@@ -15,15 +15,13 @@ public class JobController {
 
 	private final JobServiceImpl jobService;
 
-	@GetMapping(value= "/job-list-dto")
+	@GetMapping(value= "/jobs/dto")
 	public List<JobDto> listJobDto() {
 		return MapStructMapper.INSTANCE.mapJobFromEntityToDtoList(jobService.findAll());
 	}
 
-	@GetMapping(value= "/job-list")
+	@GetMapping(value= "/jobs")
 	public List<Job> listJob() {
 		return jobService.findAll();
 	}
-
-
 }
