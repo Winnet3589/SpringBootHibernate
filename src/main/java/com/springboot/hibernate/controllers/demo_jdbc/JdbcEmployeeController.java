@@ -1,7 +1,7 @@
 package com.springboot.hibernate.controllers.demo_jdbc;
 
 import com.springboot.hibernate.dtos.EmployeeDto;
-import com.springboot.hibernate.services.demo_jdbc.JdbcEmployeeService;
+import com.springboot.hibernate.services.demo_jdbc.JdbcEmployeeServiceImpl;
 import java.sql.SQLException;
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -12,7 +12,7 @@ import org.springframework.web.bind.annotation.RestController;
 @RequiredArgsConstructor
 public class JdbcEmployeeController {
 
-  private final JdbcEmployeeService employeeService;
+  private final JdbcEmployeeServiceImpl employeeService;
   @GetMapping(value = "jdbc/employees/dto/{id}")
   public EmployeeDto findById(@PathVariable Long id) throws SQLException {
     return employeeService.findById(id);

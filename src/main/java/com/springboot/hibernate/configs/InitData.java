@@ -52,13 +52,11 @@ public class InitData {
         .jobName("Developer")
         .jobDescription("Code")
         .jobType(JobType.FULL_TIME)
-//        .employees(List.of(employee, employee2))
         .build();
     Job job2 = Job.builder()
         .jobName("Tester")
         .jobDescription("Test")
         .jobType(JobType.PART_TIME)
-//        .employees(List.of(employee))
         .build();
 //    jobService.save(job);
 //    jobService.save(job2);

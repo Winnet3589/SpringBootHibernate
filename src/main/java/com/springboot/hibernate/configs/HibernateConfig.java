@@ -50,8 +50,7 @@ public class HibernateConfig {
 		factoryBean.setHibernateProperties(properties);
 		factoryBean.afterPropertiesSet();
 		//
-		SessionFactory sf = factoryBean.getObject();
-		return sf;
+		return factoryBean.getObject();
 	}
 
 	@Autowired
