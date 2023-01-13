@@ -21,8 +21,8 @@ public class CitizenIDCardDServiceImpl implements ICitizenIDCardDService {
   }
 
   @Override
-  public void save(CitizenIDCard obj) {
-    citizenIDCardDRepository.save(obj);
+  public CitizenIDCard save(CitizenIDCard obj) {
+    return citizenIDCardDRepository.save(obj);
   }
 
   @Override

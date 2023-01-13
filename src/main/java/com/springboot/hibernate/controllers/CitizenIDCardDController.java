@@ -17,12 +17,12 @@ public class CitizenIDCardDController {
 	private final CitizenIDCardDServiceImpl citizenIDCardDService;
 
 	@GetMapping(value= "/citizenidcards/dto")
-	public List<CitizenIDCardDto> listAddressDto() {
+	public List<CitizenIDCardDto> listCitizenIDCardDto() {
 		return MapStructMapper.INSTANCE.mapCitizenIDCardFromEntityToDtoList(citizenIDCardDService.findAll());
 	}
 
 	@GetMapping(value= "/citizenidcards")
-	public List<CitizenIDCard> listAddress() {
+	public List<CitizenIDCard> listCitizenIDCard() {
 		return citizenIDCardDService.findAll();
 	}
 
@@ -30,6 +30,7 @@ public class CitizenIDCardDController {
 	public CitizenIDCard findById(@PathVariable Long id) {
 		return citizenIDCardDService.findById(id);
 	}
+
 	@GetMapping(value= "/citizenidcards/dto/{id}")
 	public CitizenIDCardDto findByIdDto(@PathVariable Long id) {
 		return MapStructMapper.INSTANCE.mapCitizenIDCardFromEntityToDto(citizenIDCardDService.findById(id));

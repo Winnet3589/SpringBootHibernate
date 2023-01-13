@@ -1,8 +1,7 @@
 package com.springboot.hibernate.entities;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
-import com.springboot.hibernate.JobType;
-import com.springboot.hibernate.entities.base.BaseEntity;
+import com.springboot.hibernate.enums.JobType;
 import java.util.List;
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
@@ -37,7 +36,7 @@ public class Job extends BaseEntity<Long> {
   @Enumerated(EnumType.STRING)
   private JobType jobType;
 
-  @ManyToMany(cascade = CascadeType.ALL,fetch= FetchType.EAGER, mappedBy = "jobs")
+  @ManyToMany(cascade = CascadeType.ALL,fetch= FetchType.LAZY, mappedBy = "jobs")
   @JsonIgnoreProperties("jobs")
   private List<Employee> employees;
 }

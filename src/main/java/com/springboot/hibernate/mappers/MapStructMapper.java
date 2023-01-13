@@ -1,6 +1,7 @@
 package com.springboot.hibernate.mappers;
 
 
+import com.springboot.hibernate.dtos.AddressDto;
 import com.springboot.hibernate.dtos.BankCardDto.EmployeeInBankCardDto;
 import com.springboot.hibernate.dtos.CitizenIDCardDto;
 import com.springboot.hibernate.dtos.CitizenIDCardDto.EmployeeInCitizenIDCardDto;
@@ -11,6 +12,7 @@ import com.springboot.hibernate.dtos.EmployeeDto.BankCardInEmployeeDto;
 import com.springboot.hibernate.dtos.EmployeeDto.JobInEmployeeDto;
 import com.springboot.hibernate.dtos.JobDto;
 import com.springboot.hibernate.dtos.JobDto.EmployeeInJobDto;
+import com.springboot.hibernate.entities.Address;
 import com.springboot.hibernate.entities.CitizenIDCard;
 import com.springboot.hibernate.entities.BankCard;
 import com.springboot.hibernate.entities.Employee;
@@ -23,11 +25,10 @@ import org.mapstruct.factory.Mappers;
 public interface MapStructMapper {
   MapStructMapper INSTANCE = Mappers.getMapper(MapStructMapper.class);
 
-  // I.Entity -> Dto
   // 1.CitizenIDCard
   CitizenIDCardDto mapCitizenIDCardFromEntityToDto(CitizenIDCard citizenIDCard);
 
-  List<CitizenIDCardDto> mapCitizenIDCardFromEntityToDtoList(List<CitizenIDCard> citizenIDCards);
+  List<CitizenIDCardDto> mapCitizenIDCardFromEntityToDtoList(List<CitizenIDCard> citizenIDCardList);
   EmployeeInCitizenIDCardDto mapEmployeeFromEntityToDto_InCitizenIDCard(Employee employee);
 
   // 2.Employee
@@ -36,22 +37,25 @@ public interface MapStructMapper {
 
   CitizenIDCardInEmployeeDto mapCitizenIDCardFromEntityToDto_InEmployee(CitizenIDCard citizenIDCard);
   JobInEmployeeDto mapJobFromEntityToDto_InEmployee(Job job);
-  List<JobInEmployeeDto> mapJobFromEntityToDto_InEmployee(List<Job> job);
+  List<JobInEmployeeDto> mapJobFromEntityToDto_InEmployee(List<Job> jobList);
   BankCardInEmployeeDto mapBankCardDtoFromEntityToDtoList_InEmployee(BankCard bankCard);
-  List<BankCardInEmployeeDto> mapBankCardDtoFromEntityToDtoList_InEmployee(List<BankCard> bankCard);
+  List<BankCardInEmployeeDto> mapBankCardDtoFromEntityToDtoList_InEmployee(List<BankCard> bankCardList);
 
   // 3.Job
   JobDto mapJobFromEntityToDto(Job job);
   EmployeeInJobDto mapJobFromEntityToDtoList_InJob(Job job);
-  List<EmployeeInJobDto> mapJobFromEntityToDtoList_InJob(List<Job> job);
+  List<EmployeeInJobDto> mapJobFromEntityToDtoList_InJob(List<Job> jobList);
   List<JobDto> mapJobFromEntityToDtoList(List<Job> job);
 
   //4.Bank card
   BankCardDto mapBankCardFromEntityToDto(BankCard bankCard);
-  List<BankCardDto> mapBankCardFromEntityToDtoList(List<BankCard> bankCard);
+  List<BankCardDto> mapBankCardFromEntityToDtoList(List<BankCard> bankCardList);
   EmployeeInBankCardDto mapEmployeeFromEntityToDto_InBankCard(Job job);
 
-  // II.Dto -> entity
+  //5.Address
+  AddressDto mapAddressFromEntityToDto(Address address);
+  Address mapAddressFromDtoToEntity(AddressDto address);
+  List<AddressDto> mapAddressFromEntityToDtoList(List<Address> address);
+  List<Address> mapAddressFromDtoToEntityList(List<AddressDto> addressDtoList);
 
-  // III.Others
 }

@@ -9,7 +9,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 public class BaseRepositoryImpl<T> implements IBaseRepository<T> {
 
   @Autowired
-  private SessionFactory sessionFactory;
+  protected SessionFactory sessionFactory;
 
 
   public List<T> findAll(Class<T> type) {
@@ -18,13 +18,14 @@ public class BaseRepositoryImpl<T> implements IBaseRepository<T> {
     return (List<T>) q.list();
   }
 
-  public <T> T findById(Long id, Class<T> type) {
+  public T findById(Long id, Class<T> type) {
     Session session = this.sessionFactory.getCurrentSession();
     return session.load(type, id);
   }
 
-  public void save(final T obj) {
+  public T save(final T obj) {
     Session session = this.sessionFactory.getCurrentSession();
     session.save(obj);
+    return obj;
   }
 }

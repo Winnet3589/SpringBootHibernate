@@ -1,19 +1,21 @@
 package com.springboot.hibernate.configs;
 
-import com.springboot.hibernate.JobType;
+import com.springboot.hibernate.enums.JobType;
+import com.springboot.hibernate.entities.Address;
 import com.springboot.hibernate.entities.BankCard;
 import com.springboot.hibernate.entities.CitizenIDCard;
 import com.springboot.hibernate.entities.Employee;
 import com.springboot.hibernate.entities.Job;
 import com.springboot.hibernate.enums.Gender;
+import com.springboot.hibernate.services.impl.AddressServiceImpl;
 import com.springboot.hibernate.services.impl.BankCardServiceImpl;
 import com.springboot.hibernate.services.impl.CitizenIDCardDServiceImpl;
 import com.springboot.hibernate.services.impl.EmployeeServiceImpl;
 import com.springboot.hibernate.services.impl.JobServiceImpl;
-import java.util.Date;
-import javax.annotation.PostConstruct;
 import java.sql.Timestamp;
+import java.util.Date;
 import java.util.List;
+import javax.annotation.PostConstruct;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Component;
 
@@ -25,6 +27,7 @@ public class InitData {
   private final EmployeeServiceImpl employeeService;
   private final BankCardServiceImpl bankCardService;
   private final JobServiceImpl jobService;
+  private final AddressServiceImpl addressService;
 
   @PostConstruct
   void init() {
@@ -58,8 +61,6 @@ public class InitData {
         .jobDescription("Test")
         .jobType(JobType.PART_TIME)
         .build();
-//    jobService.save(job);
-//    jobService.save(job2);
 
     // Employee
     Employee employee = Employee
@@ -106,10 +107,17 @@ public class InitData {
     bankCardService.save(bankCard2);
     bankCardService.save(bankCard3);
 
-//    employee.setJobs(List.of(job, job2));
-//    employeeService.save(employee);
-//    employee2.setJobs(List.of(job2));
-//    employeeService.save(employee2);
-
+    Address address = Address.builder()
+        .city("Hue")
+        .country("Viet Nam")
+        .state("CACD2D")
+        .build();
+    Address address2 = Address.builder()
+        .city("Da Nang")
+        .country("Viet Nam")
+        .state("BCAD2D")
+        .build();
+    addressService.save(address);
+    addressService.save(address2);
   }
 }

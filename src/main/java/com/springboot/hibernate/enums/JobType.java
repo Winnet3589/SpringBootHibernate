@@ -1,4 +1,4 @@
-package com.springboot.hibernate;
+package com.springboot.hibernate.enums;
 
 public enum JobType {
   FULL_TIME,

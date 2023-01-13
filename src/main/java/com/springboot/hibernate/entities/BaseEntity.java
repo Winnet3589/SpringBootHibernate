@@ -1,4 +1,4 @@
-package com.springboot.hibernate.entities.base;
+package com.springboot.hibernate.entities;
 
 import java.io.Serializable;
 import java.sql.Timestamp;
