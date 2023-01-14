@@ -6,9 +6,11 @@ import com.springboot.hibernate.services.ICitizenIDCardService;
 import java.util.List;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 @Service
 @RequiredArgsConstructor
+@Transactional
 public class CitizenIDCardServiceImpl implements ICitizenIDCardService {
 
   private final CitizenIDCardRepositoryImpl citizenIDCardDRepository;
