@@ -1,6 +1,7 @@
 package com.springboot.hibernate.entities;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import com.springboot.hibernate.entities.base.BaseEntity;
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;

@@ -1,5 +1,6 @@
 package com.springboot.hibernate.entities;
 
+import com.springboot.hibernate.entities.base.BaseEntity;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Table;

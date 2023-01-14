@@ -29,4 +29,9 @@ public class JobServiceImpl implements IJobService {
   public Job findById(Long id) {
     return jobRepository.findById(id, Job.class);
   }
+
+  @Override
+  public Job update(Long id, Job job) {
+    return jobRepository.update(id, job);
+  }
 }

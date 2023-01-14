@@ -14,6 +14,8 @@ import lombok.experimental.SuperBuilder;
 @SuperBuilder
 public class AddressDto extends BaseDto<Long> {
 
+  private Long id;
+
   private String city;
 
   private String state;

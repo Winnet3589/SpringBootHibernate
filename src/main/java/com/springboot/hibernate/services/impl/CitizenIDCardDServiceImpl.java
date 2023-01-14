@@ -29,4 +29,9 @@ public class CitizenIDCardDServiceImpl implements ICitizenIDCardDService {
   public CitizenIDCard findById(Long id) {
     return citizenIDCardDRepository.findById(id, CitizenIDCard.class);
   }
+
+  @Override
+  public CitizenIDCard update(Long id,CitizenIDCard citizenIDCard) {
+    return citizenIDCardDRepository.update(id, citizenIDCard);
+  }
 }

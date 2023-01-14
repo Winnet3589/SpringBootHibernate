@@ -1,4 +1,4 @@
-package com.springboot.hibernate.entities;
+package com.springboot.hibernate.entities.base;
 
 import java.io.Serializable;
 import java.sql.Timestamp;
@@ -32,7 +32,7 @@ public class BaseEntity<T extends Serializable> {
   @GeneratedValue(strategy = GenerationType.IDENTITY)
   private T id;
 
-  @Column(name = "CREATED_DATE",updatable = false)
+  @Column(name = "CREATED_DATE", updatable = false)
   @CreationTimestamp
   private Timestamp createdDate;
 
@@ -40,6 +40,7 @@ public class BaseEntity<T extends Serializable> {
   @Column(name = "MODIFIED_DATE")
   private Timestamp modifiedDate;
 
+  // Optimistic lock
   @Version
   @Column(name = "VERSION")
   @Source(value = SourceType.DB)

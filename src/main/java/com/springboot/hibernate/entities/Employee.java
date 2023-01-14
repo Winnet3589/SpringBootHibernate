@@ -2,6 +2,7 @@ package com.springboot.hibernate.entities;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.springboot.hibernate.converters.GenderConverter;
+import com.springboot.hibernate.entities.base.BaseEntity;
 import com.springboot.hibernate.enums.Gender;
 import java.util.List;
 import javax.persistence.CascadeType;

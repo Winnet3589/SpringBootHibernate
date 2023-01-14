@@ -29,4 +29,9 @@ public class BankCardServiceImpl implements IBankCardService {
   public BankCard findById(Long id) {
     return bankCardRepository.findById(id, BankCard.class);
   }
+
+  @Override
+  public BankCard update(Long id, BankCard bankCard) {
+    return bankCardRepository.update(id,bankCard);
+  }
 }

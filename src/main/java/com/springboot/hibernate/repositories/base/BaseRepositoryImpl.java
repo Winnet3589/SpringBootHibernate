@@ -28,4 +28,11 @@ public class BaseRepositoryImpl<T> implements IBaseRepository<T> {
     session.save(obj);
     return obj;
   }
+
+  @Override
+  public T update(Long id, T obj) {
+    Session session = this.sessionFactory.getCurrentSession();
+    session.update(obj);
+    return obj;
+  }
 }

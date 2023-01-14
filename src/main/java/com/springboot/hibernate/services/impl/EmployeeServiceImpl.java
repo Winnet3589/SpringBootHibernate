@@ -29,4 +29,9 @@ public class EmployeeServiceImpl implements IEmployeeService {
   public Employee findById(Long id) {
     return employeeRepository.findById(id, Employee.class);
   }
+
+  @Override
+  public Employee update(Long id,Employee employee) {
+    return employeeRepository.update(id, employee);
+  }
 }

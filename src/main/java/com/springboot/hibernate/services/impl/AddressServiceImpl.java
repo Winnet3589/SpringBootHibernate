@@ -49,4 +49,35 @@ public class AddressServiceImpl implements IAddressService {
   public void commitFlushingHqlQuery(Address address) {
     addressRepository.commitFlushingHqlQuery(address);
   }
+
+  @Override
+  public Address update(Long id, Address address) {
+    Address address1 = setDataUpdate(id, address);
+    return addressRepository.update(id, address1);
+  }
+
+  private Address setDataUpdate(Long id, Address address) {
+    Address address1 = addressRepository.findById(id, Address.class);
+    address1.setCity(address.getCity());
+    address1.setState(address.getState());
+    address1.setCountry(address.getCountry());
+    return address1;
+  }
+
+  @Override
+  public Address optimisticLocking_thread_10s_exception(Long id, Address address) {
+    Address address1 = setDataUpdate(id, address);
+    try {
+      Thread.sleep(10000);
+      return addressRepository.update(id, address1);
+    } catch (InterruptedException e) {
+      e.printStackTrace();
+    }
+    return null;
+  }
+
+  @Override
+  public Address suport_optimisticLocking_thread_10s_exception(Long id, Address address) {
+    return update(id, address);
+  }
 }
