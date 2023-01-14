@@ -6,10 +6,8 @@ import com.springboot.hibernate.services.IJobService;
 import java.util.List;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
-import org.springframework.transaction.annotation.Transactional;
 
 @Service
-@Transactional
 @RequiredArgsConstructor
 public class JobServiceImpl implements IJobService {
 
@@ -33,5 +31,10 @@ public class JobServiceImpl implements IJobService {
   @Override
   public Job update(Long id, Job job) {
     return jobRepository.update(id, job);
+  }
+
+  @Override
+  public int delete(Long id) {
+    return jobRepository.delete(id, Job.class);
   }
 }

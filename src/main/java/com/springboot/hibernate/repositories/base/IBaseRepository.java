@@ -10,5 +10,7 @@ public interface IBaseRepository<T> {
 
   T save(final T obj);
 
-  T update(Long id,final T obj);
+  T update(Long id, final T obj);
+
+  int delete(Long id,Class<T> type);
 }

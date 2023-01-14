@@ -1,4 +1,4 @@
-package com.springboot.hibernate.services.demo_jdbc;
+package com.springboot.hibernate.services.demojdbc;
 
 import com.springboot.hibernate.dtos.EmployeeDto;
 import java.sql.SQLException;

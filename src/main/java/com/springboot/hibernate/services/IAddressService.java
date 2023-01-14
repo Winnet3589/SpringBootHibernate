@@ -2,6 +2,7 @@ package com.springboot.hibernate.services;
 
 import com.springboot.hibernate.entities.Address;
 import com.springboot.hibernate.services.base.IBaseService;
+import org.hibernate.LockMode;
 
 public interface IAddressService extends IBaseService<Address> {
 
@@ -15,6 +16,14 @@ public interface IAddressService extends IBaseService<Address> {
   void commitFlushingHqlQuery(Address address);
 
   //optimistic lock
-  Address optimisticLocking_thread_10s_exception(Long id, Address address);
-  Address suport_optimisticLocking_thread_10s_exception(Long id, Address address);
+  Address optimisticLockingThread10sException(Long id, Address address);
+
+  Address supportOptimisticLockingThread10sException(Long id, Address address);
+
+  //optimistic lock
+  Address pessimisticLockingFindById(Long id, Address address, String lockMode);
+
+  Address supportPessimisticLockingUpdate(Long id, Address address);
+
+  int supportPessimisticLockingDelete(Long id, Address address);
 }

@@ -1,6 +1,6 @@
-package com.springboot.hibernate.services.demo_jdbc;
+package com.springboot.hibernate.services.demojdbc;
 
-import com.springboot.hibernate.controllers.demo_jdbc.JdbcGetConnection;
+import com.springboot.hibernate.controllers.demojdbc.JdbcGetConnection;
 import com.springboot.hibernate.dtos.EmployeeDto;
 import com.springboot.hibernate.dtos.EmployeeDto.BankCardInEmployeeDto;
 import com.springboot.hibernate.dtos.EmployeeDto.CitizenIDCardInEmployeeDto;

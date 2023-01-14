@@ -1,17 +1,20 @@
 package com.springboot.hibernate.configs;
 
-import com.springboot.hibernate.enums.JobType;
 import com.springboot.hibernate.entities.Address;
 import com.springboot.hibernate.entities.BankCard;
 import com.springboot.hibernate.entities.CitizenIDCard;
+import com.springboot.hibernate.entities.Company;
+import com.springboot.hibernate.entities.Department;
 import com.springboot.hibernate.entities.Employee;
 import com.springboot.hibernate.entities.Job;
 import com.springboot.hibernate.enums.Gender;
+import com.springboot.hibernate.enums.JobType;
 import com.springboot.hibernate.services.impl.AddressServiceImpl;
 import com.springboot.hibernate.services.impl.BankCardServiceImpl;
-import com.springboot.hibernate.services.impl.CitizenIDCardDServiceImpl;
+import com.springboot.hibernate.services.impl.CitizenIDCardServiceImpl;
+import com.springboot.hibernate.services.impl.CompanyServiceImpl;
+import com.springboot.hibernate.services.impl.DepartmentServiceImpl;
 import com.springboot.hibernate.services.impl.EmployeeServiceImpl;
-import com.springboot.hibernate.services.impl.JobServiceImpl;
 import java.sql.Timestamp;
 import java.util.Date;
 import java.util.List;
@@ -23,11 +26,12 @@ import org.springframework.stereotype.Component;
 @RequiredArgsConstructor
 public class InitData {
 
-  private final CitizenIDCardDServiceImpl citizenIDCardDService;
+  private final CitizenIDCardServiceImpl citizenIDCardDService;
   private final EmployeeServiceImpl employeeService;
   private final BankCardServiceImpl bankCardService;
-  private final JobServiceImpl jobService;
+  private final CompanyServiceImpl companyService;
   private final AddressServiceImpl addressService;
+  private final DepartmentServiceImpl departmentService;
 
   @PostConstruct
   void init() {
@@ -119,5 +123,45 @@ public class InitData {
         .build();
     addressService.save(address);
     addressService.save(address2);
+
+    Company company = Company.builder()
+        .companyName("Mobifone")
+        .build();
+    Company company1 = Company.builder()
+        .companyName("Vina")
+        .build();
+    companyService.save(company);
+    companyService.save(company1);
+
+    Department department = Department.builder()
+        .departmentName("Hanh chinh")
+        .company(company)
+        .build();
+    Department department1 = Department.builder()
+        .departmentName("Ke toan")
+        .company(company)
+        .build();
+
+    Department department2 = Department.builder()
+        .departmentName("Nhan su")
+        .company(company)
+        .build();
+
+    Department department3 = Department.builder()
+        .departmentName("Bao Hiem")
+        .company(company1)
+        .build();
+    Department department4 = Department.builder()
+        .departmentName("Cham soc khach hang")
+        .company(company1)
+        .build();
+
+    departmentService.save(department);
+    departmentService.save(department1);
+    departmentService.save(department2);
+    departmentService.save(department3);
+    departmentService.save(department4);
+
+
   }
 }

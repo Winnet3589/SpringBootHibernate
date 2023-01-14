@@ -1,15 +1,14 @@
 package com.springboot.hibernate.services.impl;
 
-import com.springboot.hibernate.repositories.impl.AddressRepositoryImpl;
 import com.springboot.hibernate.entities.Address;
+import com.springboot.hibernate.repositories.impl.AddressRepositoryImpl;
 import com.springboot.hibernate.services.IAddressService;
 import java.util.List;
 import lombok.RequiredArgsConstructor;
+import org.hibernate.LockMode;
 import org.springframework.stereotype.Service;
-import org.springframework.transaction.annotation.Transactional;
 
 @Service
-@Transactional
 @RequiredArgsConstructor
 public class AddressServiceImpl implements IAddressService {
 
@@ -56,6 +55,11 @@ public class AddressServiceImpl implements IAddressService {
     return addressRepository.update(id, address1);
   }
 
+  @Override
+  public int delete(Long id) {
+    return addressRepository.delete(id, Address.class);
+  }
+
   private Address setDataUpdate(Long id, Address address) {
     Address address1 = addressRepository.findById(id, Address.class);
     address1.setCity(address.getCity());
@@ -64,8 +68,9 @@ public class AddressServiceImpl implements IAddressService {
     return address1;
   }
 
+  // Optimistic
   @Override
-  public Address optimisticLocking_thread_10s_exception(Long id, Address address) {
+  public Address optimisticLockingThread10sException(Long id, Address address) {
     Address address1 = setDataUpdate(id, address);
     try {
       Thread.sleep(10000);
@@ -77,7 +82,36 @@ public class AddressServiceImpl implements IAddressService {
   }
 
   @Override
-  public Address suport_optimisticLocking_thread_10s_exception(Long id, Address address) {
+  public Address supportOptimisticLockingThread10sException(Long id, Address address) {
     return update(id, address);
+  }
+
+  // Pessimistic
+  @Override
+  public Address pessimisticLockingFindById(Long id, Address address, String lockMode) {
+    for (int i = 0; i < 100000000; i++) {
+
+      //1.Demo with lock
+      // PESSIMISTIC_READ - Allows you to have a shared lock and prevent updates and deletions
+      //PESSIMISTIC_WRITE - Allows you to have an exclusive lock that prevents read , updated , deleted
+      //PESSIMISTIC_FORCE_INCREMENT - Same as PESSIMISTIC_WRITE and adds version attribute of version entity
+      LockMode lm = LockMode.valueOf(lockMode);
+      addressRepository.pessimisticFindById(id, lm);
+      
+      
+      //2.Demo no lock
+      // addressRepository.findById(id, Address.class);
+    }
+    return null;
+  }
+
+  @Override
+  public Address supportPessimisticLockingUpdate(Long id, Address address) {
+      return this.update(id, address);
+  }
+
+  @Override
+  public int supportPessimisticLockingDelete(Long id, Address address) {
+    return this.delete(id);
   }
 }

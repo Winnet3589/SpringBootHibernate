@@ -7,4 +7,5 @@ public interface IBaseService<T> {
   T save(final T obj);
   T findById(Long id);
   T update(Long id,T obj);
+  int delete(Long id);
 }

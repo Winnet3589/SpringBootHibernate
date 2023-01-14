@@ -49,7 +49,7 @@ public class CitizenIDCard extends BaseEntity<Long> {
   @Column(name = "COUNTRY")
   private String country;
 
-  @OneToOne(cascade = CascadeType.ALL, fetch = FetchType.LAZY, mappedBy = "citizenIDCard")
+  @OneToOne(cascade = CascadeType.ALL, fetch = FetchType.EAGER, mappedBy = "citizenIDCard")
   @JsonIgnoreProperties("citizenIDCard")
   private Employee employee;
 }

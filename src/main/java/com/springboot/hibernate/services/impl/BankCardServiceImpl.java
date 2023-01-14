@@ -6,10 +6,8 @@ import com.springboot.hibernate.services.IBankCardService;
 import java.util.List;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
-import org.springframework.transaction.annotation.Transactional;
 
 @Service
-@Transactional
 @RequiredArgsConstructor
 public class BankCardServiceImpl implements IBankCardService {
 
@@ -33,5 +31,10 @@ public class BankCardServiceImpl implements IBankCardService {
   @Override
   public BankCard update(Long id, BankCard bankCard) {
     return bankCardRepository.update(id,bankCard);
+  }
+
+  @Override
+  public int delete(Long id) {
+    return bankCardRepository.delete(id, BankCard.class);
   }
 }

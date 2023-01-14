@@ -1,9 +1,9 @@
 package com.springboot.hibernate.controllers;
 
-import com.springboot.hibernate.services.impl.AddressServiceImpl;
 import com.springboot.hibernate.dtos.AddressDto;
 import com.springboot.hibernate.entities.Address;
 import com.springboot.hibernate.mappers.MapStructMapper;
+import com.springboot.hibernate.services.impl.AddressServiceImpl;
 import java.util.List;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
@@ -71,17 +72,39 @@ public class AddressController {
   }
 
   // Demo optimistic Locking================================================================
-  @PostMapping(value = "optimisticLocking_thread_10s_exception/addresses/update/{id}")
-  public Address optimisticLocking_thread_10s_exception(@PathVariable Long id,
+  @PostMapping(value = "optimisticLockingThread10sException/addresses/update/{id}")
+  public Address optimisticLockingThread10sException(@PathVariable Long id,
       @RequestBody AddressDto addressDto) {
-    return addressService.optimisticLocking_thread_10s_exception(id,
+    return addressService.optimisticLockingThread10sException(id,
         MapStructMapper.INSTANCE.mapAddressFromDtoToEntity(addressDto));
   }
 
-  @PostMapping(value = "suport_optimisticLocking_thread_10s_exception/addresses/update/{id}")
-  public Address suport_optimisticLocking_thread_10s_exception(@PathVariable Long id,
+  @PostMapping(value = "supportOptimisticLockingThread10sException/addresses/update/{id}")
+  public Address supportOptimisticLockingThread10sException(@PathVariable Long id,
       @RequestBody AddressDto addressDto) {
-    return addressService.suport_optimisticLocking_thread_10s_exception(id,
+    return addressService.supportOptimisticLockingThread10sException(id,
+        MapStructMapper.INSTANCE.mapAddressFromDtoToEntity(addressDto));
+  }
+
+  // Demo Pessimistic Lock================================================================
+  @PostMapping(value = "pessimisticLockingFindById/addresses/{id}")
+  public Address pessimisticLockingFindById(@PathVariable Long id,
+      @RequestBody AddressDto addressDto, @RequestParam String lockMode) {
+    return addressService.pessimisticLockingFindById(id,
+        MapStructMapper.INSTANCE.mapAddressFromDtoToEntity(addressDto), lockMode);
+  }
+
+  @PostMapping(value = "supportPessimisticLockingUpdate/addresses/update/{id}")
+  public Address supportPessimisticLockingUpdate(@PathVariable Long id,
+      @RequestBody AddressDto addressDto) {
+    return addressService.supportPessimisticLockingUpdate(id,
+        MapStructMapper.INSTANCE.mapAddressFromDtoToEntity(addressDto));
+  }
+
+  @PostMapping(value = "supportPessimisticLockingDelete/addresses/delete/{id}")
+  public int supportPessimisticLockingDelete(@PathVariable Long id,
+      @RequestBody AddressDto addressDto) {
+    return addressService.supportPessimisticLockingDelete(id,
         MapStructMapper.INSTANCE.mapAddressFromDtoToEntity(addressDto));
   }
 

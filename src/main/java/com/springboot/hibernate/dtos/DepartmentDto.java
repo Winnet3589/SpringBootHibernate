@@ -12,11 +12,20 @@ import lombok.experimental.SuperBuilder;
 @Getter
 @Setter
 @SuperBuilder
-public class AddressDto extends BaseDto<Long> {
+public class DepartmentDto extends BaseDto<Long> {
 
-  private String city;
+  private String departmentName;
 
-  private String state;
+  private CompanyInDepartmentDto company;
 
-  private String country;
+  @NoArgsConstructor
+  @AllArgsConstructor
+  @Getter
+  @Setter
+  @SuperBuilder
+  public static class CompanyInDepartmentDto extends BaseDto<Long> {
+
+    private String companyName;
+  }
+
 }

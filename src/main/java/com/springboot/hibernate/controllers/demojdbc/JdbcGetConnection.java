@@ -1,4 +1,4 @@
-package com.springboot.hibernate.controllers.demo_jdbc;
+package com.springboot.hibernate.controllers.demojdbc;
 
 import java.sql.Connection;
 import java.sql.DriverManager;

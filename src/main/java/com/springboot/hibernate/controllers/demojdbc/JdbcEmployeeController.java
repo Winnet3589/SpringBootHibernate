@@ -1,7 +1,7 @@
-package com.springboot.hibernate.controllers.demo_jdbc;
+package com.springboot.hibernate.controllers.demojdbc;
 
 import com.springboot.hibernate.dtos.EmployeeDto;
-import com.springboot.hibernate.services.demo_jdbc.JdbcEmployeeServiceImpl;
+import com.springboot.hibernate.services.demojdbc.JdbcEmployeeServiceImpl;
 import java.sql.SQLException;
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.GetMapping;

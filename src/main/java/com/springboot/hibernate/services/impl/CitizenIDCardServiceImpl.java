@@ -2,16 +2,14 @@ package com.springboot.hibernate.services.impl;
 
 import com.springboot.hibernate.entities.CitizenIDCard;
 import com.springboot.hibernate.repositories.impl.CitizenIDCardRepositoryImpl;
-import com.springboot.hibernate.services.ICitizenIDCardDService;
+import com.springboot.hibernate.services.ICitizenIDCardService;
 import java.util.List;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
-import org.springframework.transaction.annotation.Transactional;
 
 @Service
-@Transactional
 @RequiredArgsConstructor
-public class CitizenIDCardDServiceImpl implements ICitizenIDCardDService {
+public class CitizenIDCardServiceImpl implements ICitizenIDCardService {
 
   private final CitizenIDCardRepositoryImpl citizenIDCardDRepository;
 
@@ -21,8 +19,8 @@ public class CitizenIDCardDServiceImpl implements ICitizenIDCardDService {
   }
 
   @Override
-  public CitizenIDCard save(CitizenIDCard obj) {
-    return citizenIDCardDRepository.save(obj);
+  public CitizenIDCard save(CitizenIDCard citizenIDCard) {
+    return citizenIDCardDRepository.save(citizenIDCard);
   }
 
   @Override
@@ -33,5 +31,10 @@ public class CitizenIDCardDServiceImpl implements ICitizenIDCardDService {
   @Override
   public CitizenIDCard update(Long id,CitizenIDCard citizenIDCard) {
     return citizenIDCardDRepository.update(id, citizenIDCard);
+  }
+
+  @Override
+  public int delete(Long id) {
+    return citizenIDCardDRepository.delete(id, CitizenIDCard.class);
   }
 }
