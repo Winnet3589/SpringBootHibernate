@@ -36,6 +36,12 @@ public class DepartmentController {
     return departmentService.findById(id);
   }
 
+  @GetMapping(value = "/departments/delete/{id}")
+  public ResponseEntity delete(@PathVariable Long id) {
+    int rt = departmentService.delete(id);
+    return ResponseEntity.ok(rt > 0 ? "Delete successful!" : "Delete failed!");
+  }
+
 
   @GetMapping(value = "/departments/dto/{id}")
   public DepartmentDto findByIdDto(@PathVariable Long id) {
