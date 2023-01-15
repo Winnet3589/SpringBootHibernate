@@ -1,6 +1,5 @@
 package com.springboot.hibernate.repositories.impl;
 
-import com.springboot.hibernate.entities.Company;
 import com.springboot.hibernate.entities.Department;
 import com.springboot.hibernate.repositories.IDepartmentRepository;
 import com.springboot.hibernate.repositories.base.BaseRepositoryImpl;
@@ -9,9 +8,6 @@ import java.util.List;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.hibernate.Session;
-import org.hibernate.SessionFactory;
-import org.hibernate.Transaction;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
 @Repository
@@ -57,15 +53,26 @@ public class DepartmentRepositoryImpl extends BaseRepositoryImpl<Department> imp
   @Override
   public void firstLevelCacheSameSession(Long id) {
     Session session = sessionFactory.getCurrentSession();
-    Department department = session.load(Department.class, id);
-    System.out.println(department);
     Department department1 = session.load(Department.class, id);
-    System.out.println(department1);
-    Department department2;
+    System.out.println("department1:"+ department1);
+    Department department2 = session.load(Department.class, id);
+    System.out.println("department2:"+ department2);
+    Department department3 = null;
     for (int i = 0; i < 5; i++) {
-      department2 = session.load(Department.class, id);
-      System.out.println(department2);
+      department3 = session.load(Department.class, id);
+      System.out.println("department3:"+ department3);
     }
+
+    // Delete object in cache
+    session.evict(department3);
+
+    department3 = session.load(Department.class, id);
+    System.out.println("department3:"+ department3);
+
+    // Delete all cache session
+    session.clear();
+    department3 = session.load(Department.class, id);
+    System.out.println("department3:"+ department3);
   }
 
   @Override
@@ -73,23 +80,23 @@ public class DepartmentRepositoryImpl extends BaseRepositoryImpl<Department> imp
 
     System.out.println("Session 1");
     Session session1 = sessionFactory.getCurrentSession();
-    Department department = session1.load(Department.class, id);
-    System.out.println(department);
     Department department1 = session1.load(Department.class, id);
     System.out.println(department1);
-    Department department2;
+    Department department2 = session1.load(Department.class, id);
+    System.out.println("department2:"+ department2);
+    Department department3;
     for (int i = 0; i < 5; i++) {
-      department2 = session1.load(Department.class, id);
-      System.out.println(department2);
+      department3 = session1.load(Department.class, id);
+      System.out.println("department3:"+ department3);
     }
     System.out.println("Session 2");
     Session session2 = sessionFactory.openSession();
-    Department department3 = session2.load(Department.class, id);
-    System.out.println(department3);
-    Department department4;
+    Department department4 = session2.load(Department.class, id);
+    System.out.println("department4:"+ department4);
+    Department department5;
     for (int i = 0; i < 5; i++) {
-      department4 = session2.load(Department.class, id);
-      System.out.println(department4);
+      department5 = session2.load(Department.class, id);
+      System.out.println("department5:"+ department5);
     }
   }
 

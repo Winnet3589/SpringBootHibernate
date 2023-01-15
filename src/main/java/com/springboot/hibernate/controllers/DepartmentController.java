@@ -71,6 +71,12 @@ public class DepartmentController {
   }
 
   // Cache
+  @GetMapping(value = "/departments/firstLevelCacheSameSession/{id}")
+  public ResponseEntity firstLevelCacheSameSession(@PathVariable Long id) {
+    departmentService.firstLevelCacheSameSession(id);
+    return ResponseEntity.ok("OK");
+  }
+
   @GetMapping(value = "/departments/firstLevelCacheDiffSession/{id}")
   public ResponseEntity firstLevelCacheDiffSession(@PathVariable Long id) {
     departmentService.firstLevelCacheDiffSession(id);

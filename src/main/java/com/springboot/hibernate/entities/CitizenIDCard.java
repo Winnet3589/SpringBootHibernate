@@ -17,6 +17,8 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 import lombok.experimental.SuperBuilder;
+import org.hibernate.annotations.Fetch;
+import org.hibernate.annotations.FetchMode;
 
 @NoArgsConstructor
 @AllArgsConstructor
@@ -49,7 +51,8 @@ public class CitizenIDCard extends BaseEntity<Long> {
   @Column(name = "COUNTRY")
   private String country;
 
-  @OneToOne(cascade = CascadeType.ALL, fetch = FetchType.EAGER, mappedBy = "citizenIDCard")
+  @OneToOne(cascade = CascadeType.ALL, fetch = FetchType.LAZY, mappedBy = "citizenIDCard")
+  @Fetch(value = FetchMode.SELECT)
   @JsonIgnoreProperties("citizenIDCard")
   private Employee employee;
 }
