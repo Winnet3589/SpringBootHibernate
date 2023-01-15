@@ -1,6 +1,5 @@
 package com.springboot.hibernate.controllers;
 
-import com.fasterxml.jackson.core.JsonProcessingException;
 import com.springboot.hibernate.dtos.CompanyDto;
 import com.springboot.hibernate.entities.Company;
 import com.springboot.hibernate.entities.Department;
@@ -31,8 +30,17 @@ public class CompanyController {
   }
 
   @GetMapping(value = "/companies/{id}")
-  public Company findById(@PathVariable Long id) throws JsonProcessingException {
+  public Company findById(@PathVariable Long id)  {
     Company rs = companyService.findById(id);
+
+    // Demo Lazy
+    List<Department> departments = rs.getDepartments();
+    return rs;
+  }
+
+  @GetMapping(value = "/companies/findByIdLazyEx/{id}")
+  public Company findByIdLazyEx(@PathVariable Long id)  {
+    Company rs = companyService.findByIdLazyEx(id);
 
     // Demo Lazy
     List<Department> departments = rs.getDepartments();

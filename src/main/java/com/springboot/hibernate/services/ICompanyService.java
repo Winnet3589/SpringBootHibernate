@@ -4,4 +4,6 @@ import com.springboot.hibernate.entities.Company;
 import com.springboot.hibernate.services.base.IBaseService;
 
 public interface ICompanyService extends IBaseService<Company> {
+
+  Company findByIdLazyEx(Long id);
 }

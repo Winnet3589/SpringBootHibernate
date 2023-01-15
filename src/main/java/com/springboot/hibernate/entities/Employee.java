@@ -52,7 +52,7 @@ public class Employee extends BaseEntity<Long> {
   @Column(name = "GENDER")
   public Gender gender;
 
-  @OneToOne(cascade = CascadeType.ALL,fetch= FetchType.LAZY)
+  @OneToOne(cascade = CascadeType.ALL,fetch= FetchType.EAGER)
   @JoinColumn(name = "CITIZEN_ID_CARD_ID", referencedColumnName ="ID",
       foreignKey = @ForeignKey(name = "CITIZEN_ID_CARD_FK"))
   @JsonIgnoreProperties("employee")

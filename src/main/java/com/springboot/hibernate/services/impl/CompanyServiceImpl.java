@@ -31,6 +31,11 @@ public class CompanyServiceImpl implements ICompanyService {
   }
 
   @Override
+  public Company findByIdLazyEx(Long id) {
+    return companyRepository.findByIdLazyEx(id, Company.class);
+  }
+
+  @Override
   public Company update(Long id,Company company) {
     return companyRepository.update(id, company);
   }

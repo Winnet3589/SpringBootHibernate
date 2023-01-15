@@ -27,7 +27,7 @@ public class Company extends BaseEntity<Long> {
   @Column(name = "COMPANY_NAME")
   private String companyName;
 
-  @OneToMany(cascade = CascadeType.ALL,fetch= FetchType.EAGER, mappedBy = "company")
+  @OneToMany(cascade = CascadeType.ALL,fetch= FetchType.LAZY, mappedBy = "company")
   @JsonIgnoreProperties("company")
   private List<Department> departments;
 }
