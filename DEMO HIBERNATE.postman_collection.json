@@ -759,6 +759,24 @@
 								}
 							},
 							"response": []
+						},
+						{
+							"name": "FETCH companies/findByIdLazyEx/{id}",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{host8080}}companies/findByIdLazyEx/1",
+									"host": [
+										"{{host8080}}companies"
+									],
+									"path": [
+										"findByIdLazyEx",
+										"1"
+									]
+								}
+							},
+							"response": []
 						}
 					]
 				},
