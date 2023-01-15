@@ -7,6 +7,7 @@ import com.springboot.hibernate.entities.Company;
 import com.springboot.hibernate.entities.Department;
 import com.springboot.hibernate.entities.Employee;
 import com.springboot.hibernate.entities.Job;
+import com.springboot.hibernate.entities.NetworkSocial;
 import com.springboot.hibernate.enums.Gender;
 import com.springboot.hibernate.enums.JobType;
 import com.springboot.hibernate.services.impl.AddressServiceImpl;
@@ -15,6 +16,7 @@ import com.springboot.hibernate.services.impl.CitizenIDCardServiceImpl;
 import com.springboot.hibernate.services.impl.CompanyServiceImpl;
 import com.springboot.hibernate.services.impl.DepartmentServiceImpl;
 import com.springboot.hibernate.services.impl.EmployeeServiceImpl;
+import com.springboot.hibernate.services.impl.NetworkSocialServiceImpl;
 import java.sql.Timestamp;
 import java.util.Date;
 import java.util.List;
@@ -32,6 +34,7 @@ public class InitData {
   private final CompanyServiceImpl companyService;
   private final AddressServiceImpl addressService;
   private final DepartmentServiceImpl departmentService;
+  private final NetworkSocialServiceImpl provinceService;
 
   @PostConstruct
   void init() {
@@ -162,6 +165,18 @@ public class InitData {
     departmentService.save(department3);
     departmentService.save(department4);
 
+    NetworkSocial province = NetworkSocial.builder()
+        .code("F")
+        .name("Facebook").build();
+    NetworkSocial province1 = NetworkSocial.builder()
+        .code("Z")
+        .name("Zalo").build();
+    NetworkSocial province2 = NetworkSocial.builder()
+        .code("I")
+        .name("Instagram").build();
+    provinceService.save(province);
+    provinceService.save(province1);
+    provinceService.save(province2);
 
   }
 }

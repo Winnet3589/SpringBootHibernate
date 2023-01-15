@@ -42,10 +42,14 @@ public class HibernateConfig {
 //		properties.put("hibernate.implicit_naming_strategy", env.getProperty("spring.jpa.hibernate.naming.implicit-strategy"));
 		properties.put("hibernate.globally_quoted_identifiers", env.getProperty("spring.jpa.properties.hibernate.globally_quoted_identifiers"));
 		properties.put("hibernate.enable_lazy_load_no_trans", env.getProperty("spring.jpa.properties.hibernate.enable_lazy_load_no_trans"));
+
 		properties.put("hibernate.jdbc.batch_size", env.getProperty("spring.jpa.properties.hibernate.jdbc.batch_size"));
 		properties.put("hibernate.order_inserts", "true");
 		properties.put("hibernate.order_updates", "true");
 		properties.put("hibernate.jdbc.batch_versioned_data", "true");
+
+		properties.put("hibernate.cache.use_second_level_cache", "true");
+		properties.put("hibernate.cache.region.factory_class", "org.hibernate.cache.ehcache.EhCacheRegionFactory");
 
 		LocalSessionFactoryBean factoryBean = new LocalSessionFactoryBean();
 		// Package contain entity classes

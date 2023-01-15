@@ -29,6 +29,7 @@ public class SpringBootHibernateApplication {
   public ObjectMapper objectMapper() {
     ObjectMapper mapper = new ObjectMapper();
     mapper.registerModule(new JavaTimeModule());
+    mapper.disable(SerializationFeature.FAIL_ON_EMPTY_BEANS);
     mapper.disable(SerializationFeature.WRITE_DATES_AS_TIMESTAMPS);
     mapper.disable(MapperFeature.DEFAULT_VIEW_INCLUSION);
     mapper.disable(DeserializationFeature.FAIL_ON_UNKNOWN_PROPERTIES);

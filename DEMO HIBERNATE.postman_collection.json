@@ -814,7 +814,7 @@
 								],
 								"body": {
 									"mode": "raw",
-									"raw": "{\n    \"city\":\"Quang Binh\",\n    \"state\":\"QB\",\n    \"country\":\"Viet Nam\"\n}",
+									"raw": "{\n    \"departmentName\": \"Hanh chinh 1\",\n    \"company\": {\n        \"companyName\": \"Mobifone 1\"\n    }\n}",
 									"options": {
 										"raw": {
 											"language": "json"
@@ -898,7 +898,7 @@
 									}
 								},
 								"url": {
-									"raw": "{{host8080}}departments/save/notbatch?numberOfRecords=10000",
+									"raw": "{{host8080}}departments/save/notbatch?numberOfRecords=250000",
 									"host": [
 										"{{host8080}}departments"
 									],
@@ -909,7 +909,7 @@
 									"query": [
 										{
 											"key": "numberOfRecords",
-											"value": "10000"
+											"value": "250000"
 										}
 									]
 								}
@@ -1002,6 +1002,29 @@
 							],
 							"path": [
 								"dto"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "NetworkSocial",
+			"item": [
+				{
+					"name": "networksocials/secondLevelCache/1",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{host8080}}networksocials/secondLevelCache/1",
+							"host": [
+								"{{host8080}}networksocials"
+							],
+							"path": [
+								"secondLevelCache",
+								"1"
 							]
 						}
 					},
