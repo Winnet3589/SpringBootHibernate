@@ -46,7 +46,7 @@ public class HibernateConfig {
 //		By default, this property is false. Turning it on means that each access to an associated lazy-loaded entity will be wrapped in a new session running in a new transaction:
 //		Using this property to avoid the LazyInitializationException error isn't recommended, since it'll slow down the performance of our application.
 //		This is because we'll end up with an n + 1 problem. Simply put, it means one SELECT for the User and N additional SELECTs to fetch the roles of each user
-		// properties.put("hibernate.enable_lazy_load_no_trans", env.getProperty("spring.jpa.properties.hibernate.enable_lazy_load_no_trans"));
+		 properties.put("hibernate.enable_lazy_load_no_trans", env.getProperty("spring.jpa.properties.hibernate.enable_lazy_load_no_trans"));
 
 		properties.put("hibernate.jdbc.batch_size", env.getProperty("spring.jpa.properties.hibernate.jdbc.batch_size"));
 		properties.put("hibernate.order_inserts", "true");

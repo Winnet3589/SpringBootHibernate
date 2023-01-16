@@ -21,7 +21,8 @@ public class BaseRepositoryImpl<T> implements IBaseRepository<T> {
 
   public T findById(Long id, Class<T> type) {
     Session session = this.sessionFactory.getCurrentSession();
-    return session.load(type, id);
+    T t = session.load(type, id);
+    return t;
   }
 
   public T save(final T obj) {

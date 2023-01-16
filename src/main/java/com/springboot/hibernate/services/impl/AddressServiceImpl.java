@@ -90,8 +90,9 @@ public class AddressServiceImpl implements IAddressService {
 
   // Pessimistic
   @Override
-  public Address pessimisticLockingFindById(Long id, Address address, String lockMode) {
-    for (int i = 0; i < 100000000; i++) {
+  public Address pessimisticLockingFindById(Long id, Address address, String lockMode,
+      Long numberOfRecordsFind) {
+    for (int i = 0; i < numberOfRecordsFind; i++) {
 
       //1.Demo with lock
       // PESSIMISTIC_READ - Allows you to have a shared lock and prevent updates and deletions

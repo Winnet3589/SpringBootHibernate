@@ -89,9 +89,9 @@ public class AddressController {
   // Demo Pessimistic Lock================================================================
   @PostMapping(value = "pessimisticLockingFindById/addresses/{id}")
   public Address pessimisticLockingFindById(@PathVariable Long id,
-      @RequestBody AddressDto addressDto, @RequestParam String lockMode) {
+      @RequestBody AddressDto addressDto, @RequestParam String lockMode,@RequestParam Long numberOfRecordsFind) {
     return addressService.pessimisticLockingFindById(id,
-        MapStructMapper.INSTANCE.mapAddressFromDtoToEntity(addressDto), lockMode);
+        MapStructMapper.INSTANCE.mapAddressFromDtoToEntity(addressDto), lockMode, numberOfRecordsFind);
   }
 
   @PostMapping(value = "supportPessimisticLockingUpdate/addresses/update/{id}")

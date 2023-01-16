@@ -27,9 +27,10 @@ import org.hibernate.annotations.UpdateTimestamp;
 @MappedSuperclass
 public class BaseEntity<T extends Serializable> {
 
+  // Please note that Hibernate would disable insert batching at the JDBC level transparently if the primary key of the inserting table isGenerationType.Identity.
   @Id
   @Column(name = "ID")
-  @GeneratedValue(strategy = GenerationType.IDENTITY)
+  @GeneratedValue(strategy = GenerationType.SEQUENCE)
   private T id;
 
   @Column(name = "CREATED_DATE", updatable = false)
