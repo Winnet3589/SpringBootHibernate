@@ -12,6 +12,10 @@ public interface IAddressRepository extends IBaseRepository<Address> {
   void autoFlushingNativeSql(Address address);
   void commitFlushingHqlQuery(Address address);
 
+  void alwaysFlushingHqlQuery(Address address);
+
+  void manualFlushingHqlQuery(Address address);
+
   // pessimistic
   Address pessimisticFindById(Long id, LockMode lockMode);
 }

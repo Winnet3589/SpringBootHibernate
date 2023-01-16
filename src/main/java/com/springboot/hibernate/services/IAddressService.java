@@ -15,9 +15,9 @@ public interface IAddressService extends IBaseService<Address> {
   void commitFlushingHqlQuery(Address address);
 
   //optimistic lock
-  Address optimisticLockingThread10sException(Long id, Address address);
+  Address optimisticLockingThread10sEx(Long id, Address address);
 
-  Address supportOptimisticLockingThread10sException(Long id, Address address);
+  Address supportToChangeDataOptimisticLockingThread10sEx(Long id, Address address);
 
   //optimistic lock
   Address pessimisticLockingFindById(Long id, Address address, String lockMode,
@@ -26,4 +26,8 @@ public interface IAddressService extends IBaseService<Address> {
   Address supportPessimisticLockingUpdate(Long id, Address address);
 
   int supportPessimisticLockingDelete(Long id, Address address);
+
+  void alwaysFlushingHqlQuery(Address address);
+
+  void manualFlushingHqlQuery(Address address);
 }

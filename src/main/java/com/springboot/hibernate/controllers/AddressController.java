@@ -70,28 +70,41 @@ public class AddressController {
         MapStructMapper.INSTANCE.mapAddressFromDtoToEntity(addressDto));
     return ResponseEntity.ok("OK");
   }
+  @PostMapping(value = "/addresses/flushing/always/hqlquery")
+  public ResponseEntity alwaysFlushingHqlQuery(@RequestBody AddressDto addressDto) {
+    addressService.alwaysFlushingHqlQuery(
+        MapStructMapper.INSTANCE.mapAddressFromDtoToEntity(addressDto));
+    return ResponseEntity.ok("OK");
+  }
+  @PostMapping(value = "/addresses/flushing/manual/hqlquery")
+  public ResponseEntity manualFlushingHqlQuery(@RequestBody AddressDto addressDto) {
+    addressService.manualFlushingHqlQuery(
+        MapStructMapper.INSTANCE.mapAddressFromDtoToEntity(addressDto));
+    return ResponseEntity.ok("OK");
+  }
 
   // Demo optimistic Locking================================================================
-  @PostMapping(value = "optimisticLockingThread10sException/addresses/update/{id}")
-  public Address optimisticLockingThread10sException(@PathVariable Long id,
+  @PostMapping(value = "optimisticLockingThread10sEx/addresses/update/{id}")
+  public Address optimisticLockingThread10sEx(@PathVariable Long id,
       @RequestBody AddressDto addressDto) {
-    return addressService.optimisticLockingThread10sException(id,
+    return addressService.optimisticLockingThread10sEx(id,
         MapStructMapper.INSTANCE.mapAddressFromDtoToEntity(addressDto));
   }
 
-  @PostMapping(value = "supportOptimisticLockingThread10sException/addresses/update/{id}")
-  public Address supportOptimisticLockingThread10sException(@PathVariable Long id,
+  @PostMapping(value = "supportToChangeDataOptimisticLockingThread10sEx/addresses/update/{id}")
+  public Address supportToChangeDataOptimisticLockingThread10sEx(@PathVariable Long id,
       @RequestBody AddressDto addressDto) {
-    return addressService.supportOptimisticLockingThread10sException(id,
+    return addressService.supportToChangeDataOptimisticLockingThread10sEx(id,
         MapStructMapper.INSTANCE.mapAddressFromDtoToEntity(addressDto));
   }
 
   // Demo Pessimistic Lock================================================================
   @PostMapping(value = "pessimisticLockingFindById/addresses/{id}")
-  public Address pessimisticLockingFindById(@PathVariable Long id,
+  public ResponseEntity pessimisticLockingFindById(@PathVariable Long id,
       @RequestBody AddressDto addressDto, @RequestParam String lockMode,@RequestParam Long numberOfRecordsFind) {
-    return addressService.pessimisticLockingFindById(id,
+    addressService.pessimisticLockingFindById(id,
         MapStructMapper.INSTANCE.mapAddressFromDtoToEntity(addressDto), lockMode, numberOfRecordsFind);
+    return ResponseEntity.ok("OK");
   }
 
   @PostMapping(value = "supportPessimisticLockingUpdate/addresses/update/{id}")

@@ -254,7 +254,7 @@
 							"name": "Commit",
 							"item": [
 								{
-									"name": "addresses/flushing/commit/hqlquer",
+									"name": "addresses/flushing/commit/hqlquery",
 									"request": {
 										"method": "POST",
 										"header": [
@@ -286,6 +286,74 @@
 										}
 									},
 									"response": []
+								},
+								{
+									"name": "addresses/flushing/always/hqlquery",
+									"request": {
+										"method": "POST",
+										"header": [
+											{
+												"key": "Content-Type",
+												"value": "application/json",
+												"type": "text"
+											}
+										],
+										"body": {
+											"mode": "raw",
+											"raw": "{\n    \"city\":\"Quang Binh\",\n    \"state\":\"QB\",\n    \"country\":\"Viet Nam\"\n}",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "{{host8080}}addresses/flushing/always/hqlquery",
+											"host": [
+												"{{host8080}}addresses"
+											],
+											"path": [
+												"flushing",
+												"always",
+												"hqlquery"
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "addresses/flushing/manual/hqlquery",
+									"request": {
+										"method": "POST",
+										"header": [
+											{
+												"key": "Content-Type",
+												"value": "application/json",
+												"type": "text"
+											}
+										],
+										"body": {
+											"mode": "raw",
+											"raw": "{\n    \"city\":\"Quang Binh\",\n    \"state\":\"QB\",\n    \"country\":\"Viet Nam\"\n}",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "{{host8080}}addresses/flushing/manual/hqlquery",
+											"host": [
+												"{{host8080}}addresses"
+											],
+											"path": [
+												"flushing",
+												"manual",
+												"hqlquery"
+											]
+										}
+									},
+									"response": []
 								}
 							]
 						}
@@ -301,7 +369,7 @@
 									"name": "Update & raise Version",
 									"item": [
 										{
-											"name": "optimisticLockingThread10sException/addresses/update/{id}",
+											"name": "optimisticLockingThread10sEx/addresses/update/{id}",
 											"request": {
 												"method": "POST",
 												"header": [
@@ -313,7 +381,7 @@
 												],
 												"body": {
 													"mode": "raw",
-													"raw": "{\n    \"id\":3,\n    \"city\":\"Quang Binh XXq\",\n    \"state\":\"QB XX\",\n    \"country\":\"Viet Nam XX\"\n}",
+													"raw": "{\n    \"city\":\"Quang Binh XXq\",\n    \"state\":\"QB XX\",\n    \"country\":\"Viet Nam XX\"\n}",
 													"options": {
 														"raw": {
 															"language": "json"
@@ -321,21 +389,21 @@
 													}
 												},
 												"url": {
-													"raw": "{{host8080}}optimisticLocking_thread_10s_exception/addresses/update/3",
+													"raw": "{{host8080}}optimisticLockingThread10sEx/addresses/update/22",
 													"host": [
-														"{{host8080}}optimisticLocking_thread_10s_exception"
+														"{{host8080}}optimisticLockingThread10sEx"
 													],
 													"path": [
 														"addresses",
 														"update",
-														"3"
+														"22"
 													]
 												}
 											},
 											"response": []
 										},
 										{
-											"name": "supportOptimisticLockingThread10sException/addresses/update/{id}",
+											"name": "supportToChangeDataOptimisticLockingThread10sEx/addresses/update/{id}",
 											"request": {
 												"method": "POST",
 												"header": [
@@ -347,7 +415,7 @@
 												],
 												"body": {
 													"mode": "raw",
-													"raw": "{\n    \"id\":3,\n    \"city\":\"Quang Binh1\",\n    \"state\":\"QB\",\n    \"country\":\"Viet Nam\"\n}",
+													"raw": "{\n    \"city\":\"Quang Binh1\",\n    \"state\":\"QB\",\n    \"country\":\"Viet Nam\"\n}",
 													"options": {
 														"raw": {
 															"language": "json"
@@ -355,14 +423,14 @@
 													}
 												},
 												"url": {
-													"raw": "{{host8080}}support_optimisticLocking_thread_10s_exception/addresses/update/3",
+													"raw": "{{host8080}}supportToChangeDataOptimisticLockingThread10sEx/addresses/update/22",
 													"host": [
-														"{{host8080}}support_optimisticLocking_thread_10s_exception"
+														"{{host8080}}supportToChangeDataOptimisticLockingThread10sEx"
 													],
 													"path": [
 														"addresses",
 														"update",
-														"3"
+														"22"
 													]
 												}
 											},
@@ -424,7 +492,7 @@
 										],
 										"body": {
 											"mode": "raw",
-											"raw": "{\n    \"id\":3,\n    \"city\":\"Quang Binh 2b\",\n    \"state\":\"QB\",\n    \"country\":\"Viet Nam\"\n}",
+											"raw": "{\n    \"city\":\"Quang Binh 2b\",\n    \"state\":\"QB\",\n    \"country\":\"Viet Nam\"\n}",
 											"options": {
 												"raw": {
 													"language": "json"
@@ -432,14 +500,14 @@
 											}
 										},
 										"url": {
-											"raw": "{{host8080}}supportPessimisticLockingUpdate/addresses/update/3",
+											"raw": "{{host8080}}supportPessimisticLockingUpdate/addresses/update/22",
 											"host": [
 												"{{host8080}}supportPessimisticLockingUpdate"
 											],
 											"path": [
 												"addresses",
 												"update",
-												"3"
+												"22"
 											]
 										}
 									},
@@ -458,7 +526,7 @@
 										],
 										"body": {
 											"mode": "raw",
-											"raw": "{\n    \"id\":3,\n    \"city\":\"Quang Binh 2b\",\n    \"state\":\"QB\",\n    \"country\":\"Viet Nam\"\n}",
+											"raw": "{\n    \"city\":\"Quang Binh 2b\",\n    \"state\":\"QB\",\n    \"country\":\"Viet Nam\"\n}",
 											"options": {
 												"raw": {
 													"language": "json"
@@ -466,14 +534,14 @@
 											}
 										},
 										"url": {
-											"raw": "{{host8080}}supportPessimisticLockingDelete/addresses/delete/3",
+											"raw": "{{host8080}}supportPessimisticLockingDelete/addresses/delete/22",
 											"host": [
 												"{{host8080}}supportPessimisticLockingDelete"
 											],
 											"path": [
 												"addresses",
 												"delete",
-												"3"
+												"22"
 											]
 										}
 									},
@@ -500,13 +568,13 @@
 											}
 										},
 										"url": {
-											"raw": "{{host8080}}pessimisticLockingFindById/addresses/3?lockMode=PESSIMISTIC_READ",
+											"raw": "{{host8080}}pessimisticLockingFindById/addresses/22?lockMode=PESSIMISTIC_READ&numberOfRecordsFind=9000000",
 											"host": [
 												"{{host8080}}pessimisticLockingFindById"
 											],
 											"path": [
 												"addresses",
-												"3"
+												"22"
 											],
 											"query": [
 												{
@@ -517,6 +585,10 @@
 													"key": "lockMode",
 													"value": "PESSIMISTIC_WRITE",
 													"disabled": true
+												},
+												{
+													"key": "numberOfRecordsFind",
+													"value": "9000000"
 												}
 											]
 										}
@@ -603,7 +675,7 @@
 						],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n    \"id\":3,\n    \"city\":\"Quang Binh\",\n    \"state\":\"QB2\",\n    \"country\":\"Viet Nam\"\n}",
+							"raw": "{\n    \"city\":\"Quang Binh\",\n    \"state\":\"QB2\",\n    \"country\":\"Viet Nam\"\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -611,13 +683,13 @@
 							}
 						},
 						"url": {
-							"raw": "{{host8080}}addresses/update/3",
+							"raw": "{{host8080}}addresses/update/22",
 							"host": [
 								"{{host8080}}addresses"
 							],
 							"path": [
 								"update",
-								"3"
+								"22"
 							]
 						}
 					},
@@ -761,6 +833,24 @@
 							"response": []
 						},
 						{
+							"name": "FETCH companies/dto/{id}",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{host8080}}companies/dto/1",
+									"host": [
+										"{{host8080}}companies"
+									],
+									"path": [
+										"dto",
+										"1"
+									]
+								}
+							},
+							"response": []
+						},
+						{
 							"name": "FETCH companies/findByIdLazyEx/{id}",
 							"request": {
 								"method": "GET",
@@ -832,7 +922,39 @@
 								],
 								"body": {
 									"mode": "raw",
-									"raw": "{\n    \"departmentName\": \"Hanh chinh 1\",\n    \"company\": {\n        \"companyName\": \"Mobifone 1\"\n    }\n}",
+									"raw": "{\n    \"departmentName\": \"Hanh chinh 1\",\n    \"company\": {\n        \"id\":1,\n        \"companyName\": \"Mobifone 1\"\n    }\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{host8080}}departments/save",
+									"host": [
+										"{{host8080}}departments"
+									],
+									"path": [
+										"save"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "CASCADE for case not set feature CASCADE in entity departments/save",
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"departmentName\": \"Hanh chinh 1\"\n}",
 									"options": {
 										"raw": {
 											"language": "json"
