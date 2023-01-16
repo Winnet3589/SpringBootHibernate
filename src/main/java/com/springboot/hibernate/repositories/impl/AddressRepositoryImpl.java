@@ -17,6 +17,7 @@ import org.springframework.stereotype.Repository;
 public class AddressRepositoryImpl extends BaseRepositoryImpl<Address> implements
     IAddressRepository {
 
+  // Flush
   @Override
   public void autoFlushingPriorToCommiting(Address address) {
     Session session = sessionFactory.openSession();

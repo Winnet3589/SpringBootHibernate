@@ -6,7 +6,6 @@ import com.springboot.hibernate.services.IAddressService;
 import java.util.List;
 import lombok.RequiredArgsConstructor;
 import org.hibernate.LockMode;
-import org.springframework.orm.hibernate5.HibernateOptimisticLockingFailureException;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
