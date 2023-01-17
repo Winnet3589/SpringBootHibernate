@@ -34,7 +34,7 @@ public class InitData {
   private final CompanyServiceImpl companyService;
   private final AddressServiceImpl addressService;
   private final DepartmentServiceImpl departmentService;
-  private final NetworkSocialServiceImpl provinceService;
+  private final NetworkSocialServiceImpl networkSocialService;
 
   @PostConstruct
   void init() {
@@ -165,18 +165,18 @@ public class InitData {
     departmentService.save(department3);
     departmentService.save(department4);
 
-    NetworkSocial province = NetworkSocial.builder()
+    NetworkSocial networkSocial = NetworkSocial.builder()
         .code("F")
         .name("Facebook").build();
-    NetworkSocial province1 = NetworkSocial.builder()
+    NetworkSocial networkSocial1 = NetworkSocial.builder()
         .code("Z")
         .name("Zalo").build();
-    NetworkSocial province2 = NetworkSocial.builder()
+    NetworkSocial networkSocial2 = NetworkSocial.builder()
         .code("I")
         .name("Instagram").build();
-    provinceService.save(province);
-    provinceService.save(province1);
-    provinceService.save(province2);
+    networkSocialService.save(networkSocial);
+    networkSocialService.save(networkSocial1);
+    networkSocialService.save(networkSocial2);
 
   }
 }

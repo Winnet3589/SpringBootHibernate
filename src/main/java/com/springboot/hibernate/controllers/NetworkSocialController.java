@@ -11,12 +11,12 @@ import org.springframework.web.bind.annotation.RestController;
 @RequiredArgsConstructor
 public class NetworkSocialController {
 
-  private final NetworkSocialServiceImpl provinceService;
+  private final NetworkSocialServiceImpl networkSocialService;
 
   // Second cache
   @GetMapping(value = "/networksocials/secondLevelCache/{id}")
   public ResponseEntity secondLevelCache(@PathVariable Long id) {
-    provinceService.secondLevelCache(id);
+    networkSocialService.secondLevelCache(id);
     return ResponseEntity.ok("OK");
   }
 }

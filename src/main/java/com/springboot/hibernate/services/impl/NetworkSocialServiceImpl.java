@@ -12,15 +12,15 @@ import org.springframework.transaction.annotation.Transactional;
 @Transactional
 public class NetworkSocialServiceImpl implements INetworkSocialService {
 
-  private final NetworkSocialRepositoryImpl provinceRepository;
+  private final NetworkSocialRepositoryImpl networkSocialRepository;
 
   @Override
   public void secondLevelCache(Long id) {
-    provinceRepository.secondLevelCache(id);
+    networkSocialRepository.secondLevelCache(id);
   }
 
   @Override
-  public void save(NetworkSocial province) {
-    provinceRepository.save(province);
+  public void save(NetworkSocial networkSocial) {
+    networkSocialRepository.save(networkSocial);
   }
 }

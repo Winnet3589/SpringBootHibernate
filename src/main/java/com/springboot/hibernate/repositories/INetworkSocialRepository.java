@@ -6,5 +6,5 @@ public interface INetworkSocialRepository {
 
   void secondLevelCache(Long id);
 
-  void save(NetworkSocial province);
+  void save(NetworkSocial networkSocial);
 }
