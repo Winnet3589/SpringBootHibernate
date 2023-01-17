@@ -52,6 +52,16 @@ public class AddressServiceImpl implements IAddressService {
   }
 
   @Override
+  public void commitFlushingNativeSql(Address address) {
+    addressRepository.commitFlushingNativeSql(address);
+  }
+
+  @Override
+  public void alwaysFlushingNativeSql(Address address) {
+    addressRepository.alwaysFlushingNativeSql(address);
+  }
+
+  @Override
   public void alwaysFlushingHqlQuery(Address address) {
     addressRepository.alwaysFlushingHqlQuery(address);
   }
@@ -59,6 +69,11 @@ public class AddressServiceImpl implements IAddressService {
   @Override
   public void manualFlushingHqlQuery(Address address) {
     addressRepository.manualFlushingHqlQuery(address);
+  }
+
+  @Override
+  public void manualFlushingNativeSql(Address address) {
+    addressRepository.manualFlushingNativeSql(address);
   }
 
   @Override

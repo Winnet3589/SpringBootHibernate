@@ -17,44 +17,37 @@ import org.springframework.stereotype.Repository;
 public class AddressRepositoryImpl extends BaseRepositoryImpl<Address> implements
     IAddressRepository {
 
-  // Flush
+  // Flush.AUTO
   @Override
   public void autoFlushingPriorToCommiting(Address address) {
-    Session session = sessionFactory.openSession();
-    session.getTransaction().begin();
+    Session session = sessionFactory.getCurrentSession();
     session.persist(address);
     log.info("Entity is in persisted state");
-    session.getTransaction().commit();
   }
 
   @Override
   public void autoFlushingHqlQuery(Address address) {
-    Session session = sessionFactory.openSession();
-    session.getTransaction().begin();
+    Session session = sessionFactory.getCurrentSession();
     session.persist(address);
     session.createQuery("from Company ").getResultList();
     session.createQuery("from Address ").getResultList();
-//    session.getTransaction().commit();
   }
 
   @Override
   public void autoFlushingNativeSql(Address address) {
-    Session session = sessionFactory.openSession();
-    session.getTransaction().begin();
+    Session session = sessionFactory.getCurrentSession();
     String sql = "select count(\"ID\") from \"ADDRESS\"";
-    session.createNativeQuery(sql)
-        .getSingleResult();
+
     session.persist(address);
     session.createNativeQuery(sql)
-        .addSynchronizedEntityClass(Address.class)
+        .addSynchronizedEntityClass(Address.class) // Must be add
         .getSingleResult();
-//    session.getTransaction().commit();
   }
 
+  // Flush.COMMIT
   @Override
   public void commitFlushingHqlQuery(Address address) {
-    Session session = sessionFactory.openSession();
-    session.getTransaction().begin();
+    Session session = sessionFactory.getCurrentSession();
     session.persist(address);
     session.createQuery("from Company ")
         .setFlushMode(FlushModeType.COMMIT)
@@ -63,11 +56,22 @@ public class AddressRepositoryImpl extends BaseRepositoryImpl<Address> implement
         .setFlushMode(FlushModeType.COMMIT)
         .getResultList();
   }
+
+  @Override
+  public void commitFlushingNativeSql(Address address) {
+    Session session = sessionFactory.getCurrentSession();
+    String sql = "select count(\"ID\") from \"ADDRESS\"";
+
+    session.persist(address);
+    session.createNativeQuery(sql)
+        .addSynchronizedEntityClass(Address.class) // Must be add
+        .getSingleResult();
+  }
+
 
   @Override
   public void alwaysFlushingHqlQuery(Address address) {
-    Session session = sessionFactory.openSession();
-    session.getTransaction().begin();
+    Session session = sessionFactory.getCurrentSession();
     session.persist(address);
     session.createQuery("from Company ")
         .setHibernateFlushMode(FlushMode.ALWAYS)
@@ -75,13 +79,22 @@ public class AddressRepositoryImpl extends BaseRepositoryImpl<Address> implement
     session.createQuery("from Address ")
         .setHibernateFlushMode(FlushMode.ALWAYS)
         .getResultList();
+  }
+
+  @Override
+  public void alwaysFlushingNativeSql(Address address) {
+    Session session = sessionFactory.getCurrentSession();
+    String sql = "select count(\"ID\") from \"ADDRESS\"";
+
+    session.persist(address);
+    session.createNativeQuery(sql).setHibernateFlushMode(FlushMode.ALWAYS).getSingleResult();
   }
 
   @Override
   public void manualFlushingHqlQuery(Address address) {
-    Session session = sessionFactory.openSession();
-    session.getTransaction().begin();
+    Session session = sessionFactory.getCurrentSession();
     session.persist(address);
+    session.flush();// uncomment to demo
     session.createQuery("from Company ")
         .setHibernateFlushMode(FlushMode.MANUAL)
         .getResultList();
@@ -91,9 +104,19 @@ public class AddressRepositoryImpl extends BaseRepositoryImpl<Address> implement
   }
 
   @Override
-  public Address pessimisticFindById(Long id, LockMode lockMode) {
+  public void manualFlushingNativeSql(Address address) {
     Session session = sessionFactory.getCurrentSession();
-    return session.load(Address.class, id, lockMode);
+    String sql = "select count(\"ID\") from \"ADDRESS\"";
+
+    session.persist(address);
+    session.flush();// uncomment to demo
+    session.createNativeQuery(sql).setHibernateFlushMode(FlushMode.MANUAL).getSingleResult();
+  }
+
+  @Override
+  public void pessimisticFindById(Long id, LockMode lockMode) {
+    Session session = sessionFactory.getCurrentSession();
+    session.load(Address.class, id, lockMode);
   }
 }
 

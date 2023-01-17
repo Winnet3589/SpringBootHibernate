@@ -42,48 +42,74 @@ public class AddressController {
         MapStructMapper.INSTANCE.mapAddressFromDtoToEntity(addressDto));
   }
 
-  // flushing================================================================
-  @PostMapping(value = "/addresses/flushing/auto/priortocommitting")
+  // flushing=======AUTO=========================================================
+  @PostMapping(value = "addresses/flushing/autoFlushingPriorToCommiting")
   public ResponseEntity autoFlushingPriorToCommiting(@RequestBody AddressDto addressDto) {
     addressService.autoFlushingPriorToCommiting(
         MapStructMapper.INSTANCE.mapAddressFromDtoToEntity(addressDto));
     return ResponseEntity.ok("OK");
   }
 
-  @PostMapping(value = "/addresses/flushing/auto/hqlquery")
+  @PostMapping(value = "addresses/flushing/autoFlushingHqlQuery")
   public ResponseEntity autoFlushingHqlQuery(@RequestBody AddressDto addressDto) {
     addressService.autoFlushingHqlQuery(
         MapStructMapper.INSTANCE.mapAddressFromDtoToEntity(addressDto));
     return ResponseEntity.ok("OK");
   }
 
-  @PostMapping(value = "/addresses/flushing/auto/nativesql")
+  @PostMapping(value = "addresses/flushing/autoFlushingNativeSql")
   public ResponseEntity autoFlushingNativeSql(@RequestBody AddressDto addressDto) {
     addressService.autoFlushingNativeSql(
         MapStructMapper.INSTANCE.mapAddressFromDtoToEntity(addressDto));
     return ResponseEntity.ok("OK");
   }
 
-  @PostMapping(value = "/addresses/flushing/commit/hqlquery")
+  // flushing=======COMMIT=========================================================
+  @PostMapping(value = "/addresses/flushing/commitFlushingHqlQuery")
   public ResponseEntity commitFlushingHqlQuery(@RequestBody AddressDto addressDto) {
     addressService.commitFlushingHqlQuery(
         MapStructMapper.INSTANCE.mapAddressFromDtoToEntity(addressDto));
     return ResponseEntity.ok("OK");
   }
-  @PostMapping(value = "/addresses/flushing/always/hqlquery")
+
+  @PostMapping(value = "addresses/flushing/commitFlushingNativeSql")
+  public ResponseEntity commitFlushingNativeSql(@RequestBody AddressDto addressDto) {
+    addressService.commitFlushingNativeSql(
+        MapStructMapper.INSTANCE.mapAddressFromDtoToEntity(addressDto));
+    return ResponseEntity.ok("OK");
+  }
+
+  // flushing=======ALWAYS=========================================================
+  @PostMapping(value = "/addresses/flushing/alwaysFlushingHqlQuery")
   public ResponseEntity alwaysFlushingHqlQuery(@RequestBody AddressDto addressDto) {
     addressService.alwaysFlushingHqlQuery(
         MapStructMapper.INSTANCE.mapAddressFromDtoToEntity(addressDto));
     return ResponseEntity.ok("OK");
   }
-  @PostMapping(value = "/addresses/flushing/manual/hqlquery")
+
+  @PostMapping(value = "addresses/flushing/alwaysFlushingNativeSql")
+  public ResponseEntity alwaysFlushingNativeSql(@RequestBody AddressDto addressDto) {
+    addressService.alwaysFlushingNativeSql(
+        MapStructMapper.INSTANCE.mapAddressFromDtoToEntity(addressDto));
+    return ResponseEntity.ok("OK");
+  }
+
+  // flushing=======MANUAL=========================================================
+  @PostMapping(value = "/addresses/flushing/manualFlushingHqlQuery")
   public ResponseEntity manualFlushingHqlQuery(@RequestBody AddressDto addressDto) {
     addressService.manualFlushingHqlQuery(
         MapStructMapper.INSTANCE.mapAddressFromDtoToEntity(addressDto));
     return ResponseEntity.ok("OK");
   }
 
-  // Demo optimistic Locking================================================================
+  @PostMapping(value = "addresses/flushing/manualFlushingNativeSql")
+  public ResponseEntity manualFlushingNativeSql(@RequestBody AddressDto addressDto) {
+    addressService.manualFlushingNativeSql(
+        MapStructMapper.INSTANCE.mapAddressFromDtoToEntity(addressDto));
+    return ResponseEntity.ok("OK");
+  }
+
+  // Demo optimistic Lock================================================================
   @PostMapping(value = "optimisticLockingThread10sEx/addresses/update/{id}")
   public Address optimisticLockingThread10sEx(@PathVariable Long id,
       @RequestBody AddressDto addressDto) {

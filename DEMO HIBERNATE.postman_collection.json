@@ -70,12 +70,12 @@
 						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": "{{host8080}}employees/1",
+							"raw": "{{host8080}}employees/3",
 							"host": [
 								"{{host8080}}employees"
 							],
 							"path": [
-								"1"
+								"3"
 							]
 						}
 					},
@@ -147,7 +147,7 @@
 							"name": "Auto",
 							"item": [
 								{
-									"name": "addresses/flushing/auto/hqlquery",
+									"name": "addresses/flushing/autoFlushingHqlQuery",
 									"request": {
 										"method": "POST",
 										"header": [
@@ -167,21 +167,20 @@
 											}
 										},
 										"url": {
-											"raw": "{{host8080}}addresses/flushing/auto/hqlquery",
+											"raw": "{{host8080}}addresses/flushing/autoFlushingHqlQuery",
 											"host": [
 												"{{host8080}}addresses"
 											],
 											"path": [
 												"flushing",
-												"auto",
-												"hqlquery"
+												"autoFlushingHqlQuery"
 											]
 										}
 									},
 									"response": []
 								},
 								{
-									"name": "addresses/flushing/auto/nativesql",
+									"name": "addresses/flushing/autoFlushingNativeSql",
 									"request": {
 										"method": "POST",
 										"header": [
@@ -201,21 +200,20 @@
 											}
 										},
 										"url": {
-											"raw": "{{host8080}}addresses/flushing/auto/nativesql",
+											"raw": "{{host8080}}addresses/flushing/autoFlushingNativeSql",
 											"host": [
 												"{{host8080}}addresses"
 											],
 											"path": [
 												"flushing",
-												"auto",
-												"nativesql"
+												"autoFlushingNativeSql"
 											]
 										}
 									},
 									"response": []
 								},
 								{
-									"name": "addresses/flushing/auto/priortocommitting",
+									"name": "addresses/flushing/autoFlushingPriorToCommiting",
 									"request": {
 										"method": "POST",
 										"header": [
@@ -235,14 +233,13 @@
 											}
 										},
 										"url": {
-											"raw": "{{host8080}}addresses/flushing/auto/priortocommitting",
+											"raw": "{{host8080}}addresses/flushing/autoFlushingPriorToCommiting",
 											"host": [
 												"{{host8080}}addresses"
 											],
 											"path": [
 												"flushing",
-												"auto",
-												"priortocommitting"
+												"autoFlushingPriorToCommiting"
 											]
 										}
 									},
@@ -254,7 +251,7 @@
 							"name": "Commit",
 							"item": [
 								{
-									"name": "addresses/flushing/commit/hqlquery",
+									"name": "addresses/flushing/commitFlushingHqlQuery",
 									"request": {
 										"method": "POST",
 										"header": [
@@ -274,21 +271,20 @@
 											}
 										},
 										"url": {
-											"raw": "{{host8080}}addresses/flushing/commit/hqlquery",
+											"raw": "{{host8080}}addresses/flushing/commitFlushingHqlQuery",
 											"host": [
 												"{{host8080}}addresses"
 											],
 											"path": [
 												"flushing",
-												"commit",
-												"hqlquery"
+												"commitFlushingHqlQuery"
 											]
 										}
 									},
 									"response": []
 								},
 								{
-									"name": "addresses/flushing/always/hqlquery",
+									"name": "addresses/flushing/commitFlushingNativeSql",
 									"request": {
 										"method": "POST",
 										"header": [
@@ -308,21 +304,58 @@
 											}
 										},
 										"url": {
-											"raw": "{{host8080}}addresses/flushing/always/hqlquery",
+											"raw": "{{host8080}}addresses/flushing/commitFlushingNativeSql",
 											"host": [
 												"{{host8080}}addresses"
 											],
 											"path": [
 												"flushing",
-												"always",
-												"hqlquery"
+												"commitFlushingNativeSql"
+											]
+										}
+									},
+									"response": []
+								}
+							]
+						},
+						{
+							"name": "Always",
+							"item": [
+								{
+									"name": "addresses/flushing/alwaysFlushingHqlQuery",
+									"request": {
+										"method": "POST",
+										"header": [
+											{
+												"key": "Content-Type",
+												"value": "application/json",
+												"type": "text"
+											}
+										],
+										"body": {
+											"mode": "raw",
+											"raw": "{\n    \"city\":\"Quang Binh\",\n    \"state\":\"QB\",\n    \"country\":\"Viet Nam\"\n}",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "{{host8080}}addresses/flushing/alwaysFlushingHqlQuery",
+											"host": [
+												"{{host8080}}addresses"
+											],
+											"path": [
+												"flushing",
+												"alwaysFlushingHqlQuery"
 											]
 										}
 									},
 									"response": []
 								},
 								{
-									"name": "addresses/flushing/manual/hqlquery",
+									"name": "addresses/flushing/alwaysFlushingNativeSql",
 									"request": {
 										"method": "POST",
 										"header": [
@@ -342,14 +375,84 @@
 											}
 										},
 										"url": {
-											"raw": "{{host8080}}addresses/flushing/manual/hqlquery",
+											"raw": "{{host8080}}addresses/flushing/alwaysFlushingNativeSql",
 											"host": [
 												"{{host8080}}addresses"
 											],
 											"path": [
 												"flushing",
-												"manual",
-												"hqlquery"
+												"alwaysFlushingNativeSql"
+											]
+										}
+									},
+									"response": []
+								}
+							]
+						},
+						{
+							"name": "Manual",
+							"item": [
+								{
+									"name": "addresses/flushing/manualFlushingHqlQuery",
+									"request": {
+										"method": "POST",
+										"header": [
+											{
+												"key": "Content-Type",
+												"value": "application/json",
+												"type": "text"
+											}
+										],
+										"body": {
+											"mode": "raw",
+											"raw": "{\n    \"city\":\"Quang Binh\",\n    \"state\":\"QB\",\n    \"country\":\"Viet Nam\"\n}",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "{{host8080}}addresses/flushing/manualFlushingHqlQuery",
+											"host": [
+												"{{host8080}}addresses"
+											],
+											"path": [
+												"flushing",
+												"manualFlushingHqlQuery"
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "addresses/flushing/manualFlushingNativeSql",
+									"request": {
+										"method": "POST",
+										"header": [
+											{
+												"key": "Content-Type",
+												"value": "application/json",
+												"type": "text"
+											}
+										],
+										"body": {
+											"mode": "raw",
+											"raw": "{\n    \"city\":\"Quang Binh\",\n    \"state\":\"QB\",\n    \"country\":\"Viet Nam\"\n}",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "{{host8080}}addresses/flushing/manualFlushingNativeSql",
+											"host": [
+												"{{host8080}}addresses"
+											],
+											"path": [
+												"flushing",
+												"manualFlushingNativeSql"
 											]
 										}
 									},

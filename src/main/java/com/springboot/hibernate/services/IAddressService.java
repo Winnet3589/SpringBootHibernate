@@ -30,4 +30,10 @@ public interface IAddressService extends IBaseService<Address> {
   void alwaysFlushingHqlQuery(Address address);
 
   void manualFlushingHqlQuery(Address address);
+
+  void commitFlushingNativeSql(Address address);
+
+  void alwaysFlushingNativeSql(Address address);
+
+  void manualFlushingNativeSql(Address address);
 }
