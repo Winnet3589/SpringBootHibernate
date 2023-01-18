@@ -28,8 +28,7 @@ public class Department extends BaseEntity<Long> {
   @Column(name = "DEPARTMENT_NAME")
   private String departmentName;
 
-//  @ManyToOne(cascade =CascadeType.ALL, fetch = FetchType.LAZY)
-  @ManyToOne(fetch = FetchType.LAZY)
+  @ManyToOne(cascade =CascadeType.ALL, fetch = FetchType.LAZY)
   @JoinColumn(name = "COMPANY_ID", referencedColumnName = "ID",
       foreignKey = @ForeignKey(name = "COMPANY_ID_FK"))
   @JsonIgnoreProperties("departments")
