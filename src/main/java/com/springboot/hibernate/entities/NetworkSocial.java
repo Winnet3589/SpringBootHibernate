@@ -26,4 +26,7 @@ public class NetworkSocial extends BaseEntity<Long> {
 
   @Column(name = "NAME")
   private String name;
+
+  @Column(name = "NOTE")
+  private String note;
 }

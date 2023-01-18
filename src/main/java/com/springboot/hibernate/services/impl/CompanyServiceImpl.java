@@ -1,8 +1,9 @@
 package com.springboot.hibernate.services.impl;
 
 import com.springboot.hibernate.entities.Company;
-import com.springboot.hibernate.repositories.impl.CompanyRepositoryImpl;
+import com.springboot.hibernate.repositories.ICompanyRepository;
 import com.springboot.hibernate.services.ICompanyService;
+import com.springboot.hibernate.utils.InvalidPayloadException;
 import java.util.List;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
@@ -13,7 +14,8 @@ import org.springframework.transaction.annotation.Transactional;
 @Transactional
 public class CompanyServiceImpl implements ICompanyService {
 
-  private final CompanyRepositoryImpl companyRepository;
+  private final ICompanyRepository companyRepository;
+  private final ValidateServiceImpl validateService;
 
   @Override
   public List<Company> findAll() {
@@ -21,7 +23,9 @@ public class CompanyServiceImpl implements ICompanyService {
   }
 
   @Override
-  public Company save(Company company) {
+  public Company save(Company company) throws InvalidPayloadException {
+
+    validateService.validate(company);
     return companyRepository.save(company);
   }
 

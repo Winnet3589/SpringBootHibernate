@@ -3,6 +3,7 @@ package com.springboot.hibernate.services.impl;
 import com.springboot.hibernate.entities.NetworkSocial;
 import com.springboot.hibernate.repositories.impl.NetworkSocialRepositoryImpl;
 import com.springboot.hibernate.services.INetworkSocialService;
+import java.util.List;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -22,5 +23,10 @@ public class NetworkSocialServiceImpl implements INetworkSocialService {
   @Override
   public void save(NetworkSocial networkSocial) {
     networkSocialRepository.save(networkSocial);
+  }
+
+  @Override
+  public List<Object> projection(String type) {
+    return networkSocialRepository.projection(type);
   }
 }

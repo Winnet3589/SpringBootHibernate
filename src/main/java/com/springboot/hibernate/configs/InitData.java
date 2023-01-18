@@ -17,6 +17,7 @@ import com.springboot.hibernate.services.impl.CompanyServiceImpl;
 import com.springboot.hibernate.services.impl.DepartmentServiceImpl;
 import com.springboot.hibernate.services.impl.EmployeeServiceImpl;
 import com.springboot.hibernate.services.impl.NetworkSocialServiceImpl;
+import com.springboot.hibernate.utils.InvalidPayloadException;
 import java.sql.Timestamp;
 import java.util.Date;
 import java.util.List;
@@ -37,7 +38,7 @@ public class InitData {
   private final NetworkSocialServiceImpl networkSocialService;
 
   @PostConstruct
-  void init() {
+  void init() throws InvalidPayloadException {
 
     // CitizenIDCard
     CitizenIDCard citizenIDCard = CitizenIDCard.builder()
@@ -167,13 +168,13 @@ public class InitData {
 
     NetworkSocial networkSocial = NetworkSocial.builder()
         .code("F")
-        .name("Facebook").build();
+        .name("Facebook").note("Facebook 1").build();
     NetworkSocial networkSocial1 = NetworkSocial.builder()
         .code("Z")
-        .name("Zalo").build();
+        .name("Zalo").note("Zalo 1").build();
     NetworkSocial networkSocial2 = NetworkSocial.builder()
         .code("I")
-        .name("Instagram").build();
+        .name("Instagram").note("Instagram 1").build();
     networkSocialService.save(networkSocial);
     networkSocialService.save(networkSocial1);
     networkSocialService.save(networkSocial2);

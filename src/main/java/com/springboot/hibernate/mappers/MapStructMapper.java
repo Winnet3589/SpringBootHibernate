@@ -83,6 +83,7 @@ public interface MapStructMapper {
 
   //6.Company
   CompanyDto mapCompanyFromEntityToDto(Company company);
+  Company mapCompanyFromDtoToEntity(CompanyDto companyDto);
 
   List<CompanyDto> mapCompanyFromEntityToDtoList(List<Company> companyList);
 

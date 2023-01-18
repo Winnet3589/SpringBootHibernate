@@ -5,11 +5,15 @@ import com.springboot.hibernate.entities.Company;
 import com.springboot.hibernate.entities.Department;
 import com.springboot.hibernate.mappers.MapStructMapper;
 import com.springboot.hibernate.services.impl.CompanyServiceImpl;
+import com.springboot.hibernate.utils.InvalidPayloadException;
 import java.util.List;
+import javax.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
@@ -17,6 +21,12 @@ import org.springframework.web.bind.annotation.RestController;
 public class CompanyController {
 
   private final CompanyServiceImpl companyService;
+
+  @PostMapping(value = "/companies/save")
+  public Company insert(@Valid @RequestBody CompanyDto departmentDto) throws InvalidPayloadException {
+    return companyService.save(
+        MapStructMapper.INSTANCE.mapCompanyFromDtoToEntity(departmentDto));
+  }
 
   @GetMapping(value = "/companies/dto")
   public List<CompanyDto> listCompanyDto() {
