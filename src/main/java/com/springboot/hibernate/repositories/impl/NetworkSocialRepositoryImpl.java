@@ -32,13 +32,13 @@ public class NetworkSocialRepositoryImpl implements INetworkSocialRepository {
     System.out.println("networkSocial1:" + networkSocial1);
 
     // deleting cache objects via session object won't be useful even if we clear all sessions created by the SessionFactory that spawned it.
-    session1.evict(networkSocial1);
-    session1.clear();
-    session2.evict(networkSocial1);
-    session2.clear();
-
-    //Delete cach
-    sessionFactory.getCache().evictEntityRegion(NetworkSocial.class);
+//    session1.evict(networkSocial1);
+//    session1.clear();
+//    session2.evict(networkSocial1);
+//    session2.clear();
+//
+//    //Delete cach
+//    sessionFactory.getCache().evictEntityRegion(NetworkSocial.class);
 
     NetworkSocial networkSocial2 = session2.load(NetworkSocial.class, id);
     System.out.println("networkSocial2:" + networkSocial2);

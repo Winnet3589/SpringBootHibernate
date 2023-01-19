@@ -69,9 +69,9 @@ public class DepartmentRepositoryImpl extends BaseRepositoryImpl<Department> imp
 
     department3 = session.load(Department.class, id);
     System.out.println("department3:" + department3);
-
-    // Delete all cache session
-    session.clear();
+//
+//    // Delete all cache session
+//    session.clear();
     department3 = session.load(Department.class, id);
     System.out.println("department3:" + department3);
   }
@@ -90,6 +90,9 @@ public class DepartmentRepositoryImpl extends BaseRepositoryImpl<Department> imp
       department3 = session1.load(Department.class, id);
       System.out.println("department3:" + department3);
     }
+
+
+
     System.out.println("Session 2");
     Session session2 = sessionFactory.openSession();
     Department department4 = session2.load(Department.class, id);

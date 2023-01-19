@@ -7,7 +7,7 @@ import java.util.Objects;
 import org.springframework.core.env.Environment;
 
 public class JdbcGetConnection {
-  private Environment env;
+  private final Environment env;
 
   public JdbcGetConnection(Environment env) {
     this.env = env;

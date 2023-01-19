@@ -16,7 +16,7 @@ public class BaseRepositoryImpl<T> implements IBaseRepository<T> {
   public List<T> findAll(Class<T> type) {
     Session session = this.sessionFactory.getCurrentSession();
     Query q = session.createQuery("FROM " + type.getName());
-    return (List<T>) q.list();
+    return q.list();
   }
 
   public T findById(Long id, Class<T> type) {

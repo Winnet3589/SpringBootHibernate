@@ -35,7 +35,7 @@ public class Company extends BaseEntity<Long> {
   @NotNull(message = "Company name is not null.")
   private String companyName;
 
-  @OneToMany(cascade = CascadeType.ALL,fetch= FetchType.LAZY, mappedBy = "company")
+  @OneToMany(cascade = CascadeType.ALL,fetch= FetchType.EAGER, mappedBy = "company")
   @JsonIgnoreProperties("company")
   private List<Department> departments;
 }
