@@ -18,7 +18,7 @@ public class ValidatorUtil {
     if (!violations.isEmpty()) {
       final var violation = violations.iterator().next();
       final var errorPath = violation.getPropertyPath().toString();
-      throw new InvalidPayloadException(errorPath);
+      throw new InvalidPayloadException(errorPath + " " + violation.getMessageTemplate());
     }
   }
 }
