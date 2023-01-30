@@ -13,7 +13,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 @RestController
 @RequiredArgsConstructor
-public class CitizenIDCardDController {
+public class CitizenIDCardController {
 
   private final CitizenIDCardServiceImpl citizenIDCardDService;
   private final EmployeeServiceImpl employeeService;
